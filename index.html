@@ -25,31 +25,40 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* البنر البنفسجي */
+    /* البنر البنفسجي الأساسي */
     .banner-base {
       background: #2e1065; /* بنفسجي غامق */
       position: relative;
       overflow: hidden;
     }
 
-    /* الجزء المتحرك في منتصف البنر */
+    /* الجزء المتحرك في منتصف البنر فقط */
     .banner-mid {
       position: absolute;
       top: 35%;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
       height: 160px;
-      background: linear-gradient(120deg, #7c3aed, #6d28d9, #8b5cf6);
-      background-size: 300% 300%;
-      animation: midMove 8s ease infinite;
-      opacity: 0.55;
-      filter: blur(35px);
+      background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
+      background-size: 200% 200%;
+      animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(30px);
+      border-radius: 999px;
+      z-index: 0;
     }
 
     @keyframes midMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    @keyframes midGlow {
+      0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.08); }
+      100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
     /* كروت زجاجية محسّنة */
@@ -80,26 +89,27 @@
 
 <body class="bg-white text-gray-800">
 
-  <!-- الهيدر -->
+  <!-- الهيدر (يبقى ثابت فوق) -->
   <div id="header-placeholder"></div>
 
-  <!-- البنر -->
-  <section class="banner-base text-white py-32 text-center shadow-xl fade-in">
+  <!-- البنر البنفسجي (Sticky مع التمرير) -->
+  <section class="banner-base text-white py-32 text-center shadow-xl fade-in sticky top-0 z-20">
 
-    <!-- الجزء المتحرك في المنتصف -->
+    <!-- الجزء المتحرك في منتصف البنر -->
     <div class="banner-mid"></div>
 
-    <h1 class="relative text-5xl font-medium mb-6 drop-shadow-xl">
+    <!-- المحتوى فوق الحركة -->
+    <h1 class="relative z-10 text-5xl font-medium mb-6 drop-shadow-xl">
       أدوات PDF وصور، بسيطة وسريعة
     </h1>
 
-    <p class="relative text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
       PdfSwift يوفر مجموعة أدوات مجانية تعمل بالكامل داخل المتصفح  
       بدون أي اتصال خارجي — خصوصية كاملة وسرعة عالية.
     </p>
 
     <a href="/PdfSwift/tools.html"
-       class="relative mt-10 inline-block bg-white text-purple-700 px-10 py-4 rounded-2xl text-xl font-medium shadow-xl hover:bg-purple-100 transition">
+       class="relative z-10 mt-10 inline-block bg-white text-purple-700 px-10 py-4 rounded-2xl text-xl font-medium shadow-xl hover:bg-purple-100 transition">
       جرّب الأدوات مجاناً الآن
     </a>
   </section>

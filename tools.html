@@ -50,44 +50,52 @@
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* كروت الأدوات (مربعة وصغيرة) */
+    /* كروت الأدوات (مربعة وصغيرة جداً) */
     .tool-card {
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: 0.35s ease;
+      transition: 0.3s ease;
       box-shadow: 0 6px 18px rgba(109, 40, 217, 0.15);
-      aspect-ratio: 1 / 1;
-      padding: 14px;
+      width: 100%;
+      height: 160px; /* ← الحجم الجديد القصير */
+      padding: 10px;
+      border-radius: 16px;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
       text-align: center;
-      border-radius: 18px;
     }
+
     .tool-card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-6px) scale(1.02);
       box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
       background: rgba(255, 255, 255, 0.28);
     }
 
     .tool-icon {
-      font-size: 30px;
-      margin-bottom: 6px;
+      font-size: 26px; /* أصغر */
+      margin-bottom: 4px;
       color: #6d28d9;
     }
 
     .tool-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #6d28d9;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      line-height: 1.2;
     }
 
     .tool-desc {
-      font-size: 11px;
+      font-size: 10px;
       color: #444;
-      line-height: 1.4;
+      line-height: 1.2;
+      max-width: 90%;
     }
   </style>
 </head>
@@ -122,54 +130,54 @@
         أدوات PDF سريعة وآمنة تعمل مباشرة داخل المتصفح بدون رفع ملفات — خصوصية كاملة وسرعة عالية.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        <a href="merge-pdf.html" class="tool-card block">
+        <a href="merge-pdf.html" class="tool-card">
           <i class="fa-solid fa-layer-group tool-icon"></i>
           <div class="tool-title">دمج PDF</div>
-          <div class="tool-desc">دمج عدة ملفات PDF في ملف واحد.</div>
+          <div class="tool-desc">دمج ملفات PDF بسهولة.</div>
         </a>
 
-        <a href="split-pdf.html" class="tool-card block">
+        <a href="split-pdf.html" class="tool-card">
           <i class="fa-solid fa-scissors tool-icon"></i>
           <div class="tool-title">تقسيم PDF</div>
-          <div class="tool-desc">تقسيم ملف PDF إلى صفحات متعددة.</div>
+          <div class="tool-desc">تقسيم PDF لصفحات.</div>
         </a>
 
-        <a href="compress-pdf.html" class="tool-card block">
+        <a href="compress-pdf.html" class="tool-card">
           <i class="fa-solid fa-compress tool-icon"></i>
           <div class="tool-title">ضغط PDF</div>
-          <div class="tool-desc">تقليل حجم ملف PDF بدون فقدان الجودة.</div>
+          <div class="tool-desc">تقليل حجم PDF.</div>
         </a>
 
-        <a href="pdf-to-images.html" class="tool-card block">
+        <a href="pdf-to-images.html" class="tool-card">
           <i class="fa-solid fa-file-image tool-icon"></i>
           <div class="tool-title">PDF إلى صور</div>
-          <div class="tool-desc">تحويل صفحات PDF إلى صور عالية الجودة.</div>
+          <div class="tool-desc">تحويل PDF لصور.</div>
         </a>
 
-        <a href="images-to-pdf.html" class="tool-card block">
+        <a href="images-to-pdf.html" class="tool-card">
           <i class="fa-solid fa-images tool-icon"></i>
           <div class="tool-title">صور إلى PDF</div>
-          <div class="tool-desc">تحويل مجموعة صور إلى ملف PDF واحد.</div>
+          <div class="tool-desc">تحويل الصور لملف PDF.</div>
         </a>
 
-        <a href="remove-pages.html" class="tool-card block">
+        <a href="remove-pages.html" class="tool-card">
           <i class="fa-solid fa-trash tool-icon"></i>
           <div class="tool-title">حذف صفحات</div>
-          <div class="tool-desc">إزالة صفحات محددة من PDF.</div>
+          <div class="tool-desc">إزالة صفحات PDF.</div>
         </a>
 
-        <a href="reorder-pages.html" class="tool-card block">
+        <a href="reorder-pages.html" class="tool-card">
           <i class="fa-solid fa-arrows-up-down-left-right tool-icon"></i>
           <div class="tool-title">إعادة ترتيب</div>
-          <div class="tool-desc">تغيير ترتيب صفحات PDF بسهولة.</div>
+          <div class="tool-desc">ترتيب صفحات PDF.</div>
         </a>
 
-        <a href="rotate-pdf.html" class="tool-card block">
+        <a href="rotate-pdf.html" class="tool-card">
           <i class="fa-solid fa-rotate tool-icon"></i>
           <div class="tool-title">تدوير PDF</div>
-          <div class="tool-desc">تدوير صفحات PDF بزاوية 90° أو 180°.</div>
+          <div class="tool-desc">تدوير الصفحات.</div>
         </a>
 
       </div>
@@ -182,30 +190,30 @@
         أدوات صور سريعة لمعالجة الصور مباشرة داخل المتصفح بدون فقدان جودة.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        <a href="compress-image.html" class="tool-card block">
+        <a href="compress-image.html" class="tool-card">
           <i class="fa-solid fa-image tool-icon"></i>
           <div class="tool-title">ضغط الصور</div>
-          <div class="tool-desc">ضغط الصور مع الحفاظ على الجودة.</div>
+          <div class="tool-desc">ضغط الصور بسهولة.</div>
         </a>
 
-        <a href="resize-image.html" class="tool-card block">
+        <a href="resize-image.html" class="tool-card">
           <i class="fa-solid fa-expand tool-icon"></i>
           <div class="tool-title">تغيير الحجم</div>
-          <div class="tool-desc">تعديل أبعاد الصور بسهولة.</div>
+          <div class="tool-desc">تعديل أبعاد الصور.</div>
         </a>
 
-        <a href="convert-image.html" class="tool-card block">
+        <a href="convert-image.html" class="tool-card">
           <i class="fa-solid fa-repeat tool-icon"></i>
           <div class="tool-title">تحويل الصور</div>
-          <div class="tool-desc">تحويل الصور بين صيغ مختلفة.</div>
+          <div class="tool-desc">تحويل بين الصيغ.</div>
         </a>
 
-        <a href="crop-image.html" class="tool-card block">
+        <a href="crop-image.html" class="tool-card">
           <i class="fa-solid fa-crop tool-icon"></i>
           <div class="tool-title">قص الصور</div>
-          <div class="tool-desc">قص الصور بسهولة ودقة.</div>
+          <div class="tool-desc">قص الصور بسهولة.</div>
         </a>
 
       </div>
@@ -218,30 +226,30 @@
         أدوات ذكاء اصطناعي متقدمة ستتوفر قريباً — تعمل داخل المتصفح بدون رفع ملفات.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <div class="tool-card opacity-60 cursor-not-allowed">
           <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
           <div class="tool-title">نص إلى صورة</div>
-          <div class="tool-desc">قريباً — إنشاء صور بالذكاء الاصطناعي.</div>
+          <div class="tool-desc">قريباً — إنشاء صور.</div>
         </div>
 
         <div class="tool-card opacity-60 cursor-not-allowed">
           <i class="fa-solid fa-user-slash tool-icon"></i>
           <div class="tool-title">إزالة الخلفية</div>
-          <div class="tool-desc">قريباً — إزالة الخلفية تلقائياً.</div>
+          <div class="tool-desc">قريباً — إزالة الخلفية.</div>
         </div>
 
         <div class="tool-card opacity-60 cursor-not-allowed">
           <i class="fa-solid fa-up-right-and-down-left-from-center tool-icon"></i>
           <div class="tool-title">تحسين الجودة</div>
-          <div class="tool-desc">قريباً — رفع دقة الصور.</div>
+          <div class="tool-desc">قريباً — رفع الدقة.</div>
         </div>
 
         <div class="tool-card opacity-60 cursor-not-allowed">
           <i class="fa-solid fa-file-lines tool-icon"></i>
           <div class="tool-title">استخراج النصوص</div>
-          <div class="tool-desc">قريباً — قراءة النصوص من الصور.</div>
+          <div class="tool-desc">قريباً — قراءة النصوص.</div>
         </div>
 
       </div>

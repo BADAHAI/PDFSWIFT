@@ -12,6 +12,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- pdf-lib -->
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+  <!-- pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- Tesseract.js -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
   <style>
     body { font-family: 'Inter', sans-serif; }
 
@@ -111,13 +118,98 @@
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(139, 92, 246, 0.9); /* بنفسجي فاتح */
+      background: rgba(139, 92, 246, 0.9);
       color: white;
       font-size: 11px;
       padding: 2px 0;
       border-radius: 16px 16px 0 0;
       text-align: center;
       font-weight: 600;
+    }
+
+    /* المودال الزجاجي */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .hidden { display: none; }
+
+    .modal-content {
+      width: 90%;
+      max-width: 480px;
+      padding: 25px;
+      border-radius: 18px;
+
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 40px rgba(109, 40, 217, 0.35);
+
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #6d28d9;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-size: 22px;
+      color: #fff;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .file-input {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .tool-options {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .tool-options label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .action-btn {
+      width: 100%;
+      padding: 12px;
+      background: #6d28d9;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #5b21b6;
     }
   </style>
 </head>
@@ -154,54 +246,54 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        <!-- مفعّلة -->
-        <a href="merge-pdf.html" class="tool-card">
+        <!-- مفعّلة (تعمل داخل المودال) -->
+        <button type="button" class="tool-card" onclick="openTool('merge')">
           <i class="fa-solid fa-layer-group tool-icon"></i>
           <div class="tool-title">دمج PDF</div>
           <div class="tool-desc">دمج ملفات PDF بسهولة.</div>
-        </a>
+        </button>
 
-        <a href="split-pdf.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('split')">
           <i class="fa-solid fa-scissors tool-icon"></i>
           <div class="tool-title">تقسيم PDF</div>
           <div class="tool-desc">تقسيم PDF لصفحات.</div>
-        </a>
+        </button>
 
-        <a href="compress-pdf.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('compressPdf')">
           <i class="fa-solid fa-compress tool-icon"></i>
           <div class="tool-title">ضغط PDF</div>
           <div class="tool-desc">تقليل حجم PDF.</div>
-        </a>
+        </button>
 
-        <a href="pdf-to-images.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('pdfToImages')">
           <i class="fa-solid fa-file-image tool-icon"></i>
           <div class="tool-title">PDF إلى صور</div>
           <div class="tool-desc">تحويل PDF لصور.</div>
-        </a>
+        </button>
 
-        <a href="images-to-pdf.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('imagesToPdf')">
           <i class="fa-solid fa-images tool-icon"></i>
           <div class="tool-title">صور إلى PDF</div>
           <div class="tool-desc">تحويل الصور لملف PDF.</div>
-        </a>
+        </button>
 
-        <a href="remove-pages.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('removePages')">
           <i class="fa-solid fa-trash tool-icon"></i>
           <div class="tool-title">حذف صفحات</div>
           <div class="tool-desc">إزالة صفحات PDF.</div>
-        </a>
+        </button>
 
-        <a href="reorder-pages.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('reorder')">
           <i class="fa-solid fa-arrows-up-down-left-right tool-icon"></i>
           <div class="tool-title">إعادة ترتيب</div>
           <div class="tool-desc">ترتيب صفحات PDF.</div>
-        </a>
+        </button>
 
-        <a href="rotate-pdf.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('rotate')">
           <i class="fa-solid fa-rotate tool-icon"></i>
           <div class="tool-title">تدوير PDF</div>
           <div class="tool-desc">تدوير الصفحات.</div>
-        </a>
+        </button>
 
         <!-- قريباً -->
         <div class="tool-card soon">
@@ -241,29 +333,29 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <!-- مفعّلة -->
-        <a href="compress-image.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('compressImage')">
           <i class="fa-solid fa-image tool-icon"></i>
           <div class="tool-title">ضغط الصور</div>
           <div class="tool-desc">ضغط الصور بسهولة.</div>
-        </a>
+        </button>
 
-        <a href="resize-image.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('resizeImage')">
           <i class="fa-solid fa-expand tool-icon"></i>
           <div class="tool-title">تغيير الحجم</div>
           <div class="tool-desc">تعديل أبعاد الصور.</div>
-        </a>
+        </button>
 
-        <a href="convert-image.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('convertImage')">
           <i class="fa-solid fa-repeat tool-icon"></i>
           <div class="tool-title">تحويل الصور</div>
           <div class="tool-desc">تحويل بين الصيغ.</div>
-        </a>
+        </button>
 
-        <a href="crop-image.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('cropImage')">
           <i class="fa-solid fa-crop tool-icon"></i>
           <div class="tool-title">قص الصور</div>
           <div class="tool-desc">قص الصور بسهولة.</div>
-        </a>
+        </button>
 
         <!-- قريباً -->
         <div class="tool-card soon">
@@ -303,11 +395,11 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <!-- مفعّلة -->
-        <a href="ai-text-extract.html" class="tool-card">
+        <button type="button" class="tool-card" onclick="openTool('ocr')">
           <i class="fa-solid fa-file-lines tool-icon"></i>
           <div class="tool-title">استخراج النصوص OCR</div>
           <div class="tool-desc">قراءة النصوص من الصور.</div>
-        </a>
+        </button>
 
         <!-- قريباً -->
         <div class="tool-card soon">
@@ -339,8 +431,455 @@
     </div>
   </section>
 
+  <!-- المودال -->
+  <div id="toolModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="toolTitle" class="modal-title"></h2>
+
+      <input type="file" id="fileInput" class="file-input" multiple>
+
+      <div id="toolOptions" class="tool-options"></div>
+
+      <button class="action-btn" onclick="runTool()">تنفيذ</button>
+    </div>
+  </div>
+
   <!-- الفوتر -->
   <div id="footer-placeholder"></div>
+
+  <script>
+    let currentTool = null;
+
+    function openTool(tool) {
+      currentTool = tool;
+      document.getElementById("toolModal").classList.remove("hidden");
+
+      const title = document.getElementById("toolTitle");
+      const options = document.getElementById("toolOptions");
+      const fileInput = document.getElementById("fileInput");
+
+      fileInput.value = "";
+      options.innerHTML = "";
+
+      const toolNames = {
+        merge: "دمج ملفات PDF",
+        split: "تقسيم PDF",
+        compressPdf: "ضغط PDF",
+        pdfToImages: "PDF إلى صور",
+        imagesToPdf: "صور إلى PDF",
+        removePages: "حذف صفحات PDF",
+        reorder: "إعادة ترتيب الصفحات",
+        rotate: "تدوير PDF",
+        compressImage: "ضغط الصور",
+        resizeImage: "تغيير حجم الصور",
+        convertImage: "تحويل الصور",
+        cropImage: "قص الصور",
+        ocr: "استخراج النصوص OCR"
+      };
+
+      title.innerText = toolNames[tool] || "أداة";
+
+      if (tool === "split") {
+        options.innerHTML = `
+          <label>رقم الصفحة المراد استخراجها:</label>
+          <input type="number" id="pageNumber" class="file-input" placeholder="مثال: 1">
+        `;
+      }
+
+      if (tool === "rotate") {
+        options.innerHTML = `
+          <label>زاوية التدوير:</label>
+          <select id="rotateAngle" class="file-input">
+            <option value="90">90°</option>
+            <option value="180">180°</option>
+            <option value="270">270°</option>
+          </select>
+        `;
+      }
+
+      if (tool === "removePages") {
+        options.innerHTML = `
+          <label>أرقام الصفحات المراد حذفها (مثال: 1,3,5):</label>
+          <input type="text" id="pagesToRemove" class="file-input">
+        `;
+      }
+
+      if (tool === "reorder") {
+        options.innerHTML = `
+          <label>ترتيب الصفحات الجديد (مثال: 3,1,2):</label>
+          <input type="text" id="newOrder" class="file-input">
+        `;
+      }
+
+      if (tool === "resizeImage") {
+        options.innerHTML = `
+          <label>العرض الجديد (px):</label>
+          <input type="number" id="newWidth" class="file-input">
+
+          <label>الارتفاع الجديد (px):</label>
+          <input type="number" id="newHeight" class="file-input">
+        `;
+      }
+
+      if (tool === "convertImage") {
+        options.innerHTML = `
+          <label>اختر الصيغة:</label>
+          <select id="convertFormat" class="file-input">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WEBP</option>
+          </select>
+        `;
+      }
+
+      if (tool === "pdfToImages") {
+        options.innerHTML = `
+          <p>سيتم تحويل كل صفحة في ملف PDF إلى صورة PNG.</p>
+        `;
+      }
+
+      if (tool === "imagesToPdf") {
+        options.innerHTML = `
+          <p>ارفع صورة أو أكثر لتحويلها إلى ملف PDF واحد.</p>
+        `;
+      }
+
+      if (tool === "compressPdf") {
+        options.innerHTML = `
+          <p>سيتم إعادة حفظ الملف لمحاولة تقليل الحجم قدر الإمكان.</p>
+        `;
+      }
+
+      if (tool === "ocr") {
+        options.innerHTML = `
+          <p>يدعم العربية والإنجليزية. ارفع صورة تحتوي على نص.</p>
+        `;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("toolModal").classList.add("hidden");
+    }
+
+    /* ===== أدوات PDF ===== */
+
+    async function mergePDF(files) {
+      const mergedPdf = await PDFLib.PDFDocument.create();
+
+      for (let file of files) {
+        const bytes = await file.arrayBuffer();
+        const pdf = await PDFLib.PDFDocument.load(bytes);
+        const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        pages.forEach(p => mergedPdf.addPage(p));
+      }
+
+      return await mergedPdf.save();
+    }
+
+    async function splitPDF(file, pageNumber) {
+      const bytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+
+      if (pageNumber < 1 || pageNumber > pdf.getPageCount()) {
+        throw new Error("رقم الصفحة غير صحيح");
+      }
+
+      const newPdf = await PDFLib.PDFDocument.create();
+      const [page] = await newPdf.copyPages(pdf, [pageNumber - 1]);
+      newPdf.addPage(page);
+
+      return await newPdf.save();
+    }
+
+    async function rotatePDF(file, angle) {
+      const bytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+
+      pdf.getPages().forEach(page => page.setRotation(PDFLib.degrees(angle)));
+
+      return await pdf.save();
+    }
+
+    async function compressPdfFile(file) {
+      const bytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+      return await pdf.save(); // إعادة حفظ (ضغط بسيط)
+    }
+
+    async function removePagesPDF(file, pagesToRemove) {
+      const bytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+
+      const total = pdf.getPageCount();
+      const newPdf = await PDFLib.PDFDocument.create();
+
+      for (let i = 0; i < total; i++) {
+        if (!pagesToRemove.includes(i + 1)) {
+          const [page] = await newPdf.copyPages(pdf, [i]);
+          newPdf.addPage(page);
+        }
+      }
+
+      return await newPdf.save();
+    }
+
+    async function reorderPDF(file, newOrder) {
+      const bytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+
+      const newPdf = await PDFLib.PDFDocument.create();
+      const total = pdf.getPageCount();
+
+      for (let idx of newOrder) {
+        if (idx < 1 || idx > total) continue;
+        const [page] = await newPdf.copyPages(pdf, [idx - 1]);
+        newPdf.addPage(page);
+      }
+
+      return await newPdf.save();
+    }
+
+    async function pdfToImages(file) {
+      const bytes = await file.arrayBuffer();
+      const loadingTask = pdfjsLib.getDocument({ data: bytes });
+      const pdf = await loadingTask.promise;
+
+      const images = [];
+
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const viewport = page.getViewport({ scale: 2 });
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({ canvasContext: ctx, viewport }).promise;
+
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png", 0.9));
+        images.push({ blob, index: pageNum });
+      }
+
+      return images;
+    }
+
+    async function imagesToPdf(files) {
+      const pdfDoc = await PDFLib.PDFDocument.create();
+
+      for (let file of files) {
+        const bytes = await file.arrayBuffer();
+        const img = await pdfDoc.embedJpg(bytes).catch(async () => await pdfDoc.embedPng(bytes));
+        const page = pdfDoc.addPage([img.width, img.height]);
+        page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
+      }
+
+      return await pdfDoc.save();
+    }
+
+    /* ===== أدوات الصور ===== */
+
+    function loadImage(file) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    async function compressImage(file) {
+      const img = await loadImage(file);
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      return await new Promise(resolve => {
+        canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.6);
+      });
+    }
+
+    async function resizeImage(file, width, height) {
+      const img = await loadImage(file);
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      return await new Promise(resolve => {
+        canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
+      });
+    }
+
+    async function convertImage(file, format) {
+      const img = await loadImage(file);
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      return await new Promise(resolve => {
+        canvas.toBlob(blob => resolve(blob), format, 0.9);
+      });
+    }
+
+    async function cropImage(file) {
+      const img = await loadImage(file);
+      const canvas = document.createElement("canvas");
+
+      const size = Math.min(img.width, img.height);
+      canvas.width = size;
+      canvas.height = size;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, size, size, 0, 0, size, size);
+
+      return await new Promise(resolve => {
+        canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
+      });
+    }
+
+    /* ===== OCR ===== */
+
+    async function runOCR(file) {
+      const { createWorker } = Tesseract;
+      const worker = await createWorker("ara+eng");
+      const result = await worker.recognize(file);
+      await worker.terminate();
+      return result.data.text;
+    }
+
+    /* ===== تشغيل الأداة المختارة ===== */
+
+    async function runTool() {
+      const fileInput = document.getElementById("fileInput");
+      const files = fileInput.files;
+
+      if (!files.length) {
+        alert("الرجاء رفع ملف أولاً");
+        return;
+      }
+
+      let output;
+      let filename = "output";
+
+      try {
+        switch (currentTool) {
+          case "merge":
+            output = await mergePDF(files);
+            filename = "merged.pdf";
+            break;
+
+          case "split":
+            const page = parseInt(document.getElementById("pageNumber").value);
+            if (!page) throw new Error("أدخل رقم صفحة صحيح");
+            output = await splitPDF(files[0], page);
+            filename = `page-${page}.pdf`;
+            break;
+
+          case "rotate":
+            const angle = parseInt(document.getElementById("rotateAngle").value);
+            output = await rotatePDF(files[0], angle);
+            filename = `rotated-${angle}.pdf`;
+            break;
+
+          case "compressPdf":
+            output = await compressPdfFile(files[0]);
+            filename = "compressed.pdf";
+            break;
+
+          case "removePages":
+            const pagesStr = document.getElementById("pagesToRemove").value;
+            const pagesToRemove = pagesStr.split(",").map(p => parseInt(p.trim())).filter(Boolean);
+            output = await removePagesPDF(files[0], pagesToRemove);
+            filename = "removed-pages.pdf";
+            break;
+
+          case "reorder":
+            const orderStr = document.getElementById("newOrder").value;
+            const newOrder = orderStr.split(",").map(p => parseInt(p.trim())).filter(Boolean);
+            output = await reorderPDF(files[0], newOrder);
+            filename = "reordered.pdf";
+            break;
+
+          case "pdfToImages":
+            const images = await pdfToImages(files[0]);
+            images.forEach(img => {
+              downloadFile(img.blob, `page-${img.index}.png`);
+            });
+            closeModal();
+            return;
+
+          case "imagesToPdf":
+            output = await imagesToPdf(files);
+            filename = "images.pdf";
+            break;
+
+          case "compressImage":
+            output = await compressImage(files[0]);
+            filename = "compressed.jpg";
+            break;
+
+          case "resizeImage":
+            const w = parseInt(document.getElementById("newWidth").value);
+            const h = parseInt(document.getElementById("newHeight").value);
+            if (!w || !h) throw new Error("أدخل أبعاد صحيحة");
+            output = await resizeImage(files[0], w, h);
+            filename = "resized.jpg";
+            break;
+
+          case "convertImage":
+            const format = document.getElementById("convertFormat").value;
+            output = await convertImage(files[0], format);
+            filename = "converted." + format.split("/")[1];
+            break;
+
+          case "cropImage":
+            output = await cropImage(files[0]);
+            filename = "cropped.jpg";
+            break;
+
+          case "ocr":
+            const text = await runOCR(files[0]);
+            downloadText(text, "extracted.txt");
+            closeModal();
+            return;
+        }
+
+        downloadFile(output, filename);
+        closeModal();
+
+      } catch (err) {
+        console.error(err);
+        alert("حدث خطأ أثناء تنفيذ العملية: " + err.message);
+      }
+    }
+
+    /* ===== تنزيل الملفات ===== */
+
+    function downloadFile(bytes, filename) {
+      const blob = bytes instanceof Blob ? bytes : new Blob([bytes]);
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadText(text, filename) {
+      const blob = new Blob([text], { type: "text/plain" });
+      downloadFile(blob, filename);
+    }
+  </script>
 
   <script src="js/layout.js"></script>
 </body>

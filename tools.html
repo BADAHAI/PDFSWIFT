@@ -4,101 +4,167 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>PdfSwift - جميع الأدوات</title>
+  <title>أدوات PdfSwift - جميع أدوات PDF والصور في مكان واحد</title>
+
+  <meta name="description" content="جميع أدوات PdfSwift لمعالجة ملفات PDF والصور مباشرة داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، تعديل، والمزيد.">
+  <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, صور, ضغط الصور, تعديل الصور, PdfSwift">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
+
+    /* البنر البنفسجي */
+    .banner-base {
+      background: #2e1065;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* الجزء المتحرك في منتصف البنر */
+    .banner-mid {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 160px;
+      background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
+      background-size: 200% 200%;
+      animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(35px);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    @keyframes midMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes midGlow {
+      0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.08); }
+      100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    }
+
+    /* كروت الأدوات */
+    .tool-card {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: 0.35s ease;
+      box-shadow: 0 8px 25px rgba(109, 40, 217, 0.15);
+    }
+    .tool-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
+      background: rgba(255, 255, 255, 0.28);
+    }
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-white text-gray-800">
 
+  <!-- الهيدر -->
   <div id="header-placeholder"></div>
 
-  <section class="container mx-auto px-6 py-12">
+  <!-- البنر -->
+  <section class="banner-base text-white py-28 text-center shadow-xl relative">
 
-    <h1 class="text-3xl font-bold mb-12 text-center">جميع الأدوات</h1>
+    <div class="banner-mid"></div>
 
-    <!-- PDF Tools -->
-    <h2 class="text-2xl font-bold text-indigo-600 mb-6">أدوات PDF</h2>
+    <h1 class="relative z-10 text-5xl font-medium mb-4 drop-shadow-xl">
+      جميع أدوات PdfSwift
+    </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-file-pdf text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">دمج ملفات PDF</h3>
-        <p class="text-gray-600 text-sm mt-2">ادمج عدة ملفات PDF في ملف واحد.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-scissors text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">تقسيم PDF</h3>
-        <p class="text-gray-600 text-sm mt-2">قسّم ملف PDF إلى صفحات منفصلة.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-compress text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">ضغط PDF</h3>
-        <p class="text-gray-600 text-sm mt-2">قلل حجم ملف PDF بسهولة.</p>
-      </div>
-
-    </div>
-
-    <!-- Image Tools -->
-    <h2 class="text-2xl font-bold text-indigo-600 mb-6">أدوات الصور</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-image text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">ضغط الصور</h3>
-        <p class="text-gray-600 text-sm mt-2">قلل حجم الصور مباشرة من المتصفح.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-expand text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">تغيير حجم الصور</h3>
-        <p class="text-gray-600 text-sm mt-2">غيّر أبعاد الصور بسهولة.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
-        <i class="fa-solid fa-repeat text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">تحويل صيغ الصور</h3>
-        <p class="text-gray-600 text-sm mt-2">حوّل بين JPG و PNG و WEBP.</p>
-      </div>
-
-    </div>
-
-    <!-- AI Tools -->
-    <h2 class="text-2xl font-bold text-indigo-600 mb-6">أدوات الذكاء الاصطناعي <span class="text-gray-500">(قريباً)</span></h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-50 pointer-events-none">
-
-      <div class="bg-white p-6 rounded-xl shadow">
-        <i class="fa-solid fa-wand-magic-sparkles text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">تحسين جودة الصور</h3>
-        <p class="text-gray-600 text-sm mt-2">قريباً.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow">
-        <i class="fa-solid fa-brain text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">تحويل النص إلى PDF ذكي</h3>
-        <p class="text-gray-600 text-sm mt-2">قريباً.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow">
-        <i class="fa-solid fa-robot text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">ملخصات PDF بالذكاء الاصطناعي</h3>
-        <p class="text-gray-600 text-sm mt-2">قريباً.</p>
-      </div>
-
-    </div>
-
+    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+      اختر أداتك وابدأ العمل فوراً — كل الأدوات تعمل داخل المتصفح بدون رفع ملفات.
+    </p>
   </section>
 
+  <!-- الأدوات -->
+  <section class="py-24">
+    <div class="container mx-auto px-6">
+
+      <h2 class="text-4xl font-medium text-center mb-16 text-purple-700">
+        أدوات PDF
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- دمج PDF -->
+        <a href="merge-pdf.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-layer-group text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">دمج ملفات PDF</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            دمج عدة ملفات PDF في ملف واحد بسهولة وسرعة.
+          </p>
+        </a>
+
+        <!-- تقسيم PDF -->
+        <a href="split-pdf.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-scissors text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">تقسيم PDF</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            تقسيم ملف PDF إلى صفحات أو أجزاء متعددة.
+          </p>
+        </a>
+
+        <!-- ضغط PDF -->
+        <a href="compress-pdf.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-compress text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">ضغط PDF</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            تقليل حجم ملف PDF بدون فقدان الجودة.
+          </p>
+        </a>
+
+      </div>
+
+      <!-- أدوات الصور -->
+      <h2 class="text-4xl font-medium text-center mt-24 mb-16 text-purple-700">
+        أدوات الصور
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- ضغط الصور -->
+        <a href="compress-image.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-image text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">ضغط الصور</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            ضغط الصور مع الحفاظ على الجودة العالية.
+          </p>
+        </a>
+
+        <!-- تغيير حجم الصور -->
+        <a href="resize-image.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-expand text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">تغيير حجم الصور</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            تعديل أبعاد الصور بسهولة ودقة.
+          </p>
+        </a>
+
+        <!-- تحويل الصور -->
+        <a href="convert-image.html" class="tool-card p-10 rounded-2xl text-center block">
+          <i class="fa-solid fa-repeat text-6xl text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3 text-purple-700">تحويل الصور</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            تحويل الصور بين صيغ مختلفة مثل JPG و PNG.
+          </p>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- الفوتر -->
   <div id="footer-placeholder"></div>
 
   <script src="js/layout.js"></script>

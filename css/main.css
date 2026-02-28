@@ -1,0 +1,80 @@
+/* css/main.css */
+
+/* --- CSS Custom Properties (Variables) --- */
+:root {
+  /* Colors */
+  --color-primary: #007bff;     /* اللون الرئيسي (أزرق) */
+  --color-primary-light: #e3f2ff;
+  --color-secondary: #6c757d;   /* لون ثانوي (رمادي) */
+  --color-accent: #ffc107;      /* لون للتنبيهات والشارات (ذهبي) */
+  --color-text: #212529;        /* لون النص الأساسي (داكن) */
+  --color-text-light: #495057;  /* لون نص ثانوي */
+  --color-bg: #ffffff;          /* لون خلفية الموقع */
+  --color-bg-light: #f8f9fa;    /* لون خلفية خفيف (للهيدر والفوتر) */
+  --color-bg-section: #f4f7f6;  /* لون خلفية الأقسام */
+  --color-border: #dee2e6;      /* لون الحدود */
+
+  /* Typography */
+  --font-family-primary: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+
+  --line-height-base: 1.6;
+  --line-height-sm: 1.4;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Border Radius */
+  --border-radius-sm: 5px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* --- Global Styles & Typography --- */
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg); /* Will be overridden by page styles */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: var(--line-height-sm);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

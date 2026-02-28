@@ -6,8 +6,8 @@
 
   <title>أدوات PdfSwift - PDF والصور والذكاء الاصطناعي</title>
 
-  <meta name="description" content="جميع أدوات PdfSwift لمعالجة ملفات PDF والصور والذكاء الاصطناعي مباشرة داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، تعديل، والمزيد.">
-  <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, صور, ضغط الصور, تعديل الصور, ذكاء اصطناعي, PdfSwift">
+  <meta name="description" content="جميع أدوات PdfSwift لمعالجة ملفات PDF والصور والذكاء الاصطناعي مباشرة داخل المتصفح بدون رفع ملفات. أدوات دمج، تقسيم، ضغط، تحويل، OCR، والمزيد.">
+  <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, OCR, صور, ضغط الصور, تعديل الصور, ذكاء اصطناعي, PdfSwift">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -50,7 +50,7 @@
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* كروت الأدوات (مربعة وصغيرة جداً) */
+    /* كروت الأدوات (قصيرة + مربعة + متناسقة) */
     .tool-card {
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(14px);
@@ -58,7 +58,7 @@
       transition: 0.3s ease;
       box-shadow: 0 6px 18px rgba(109, 40, 217, 0.15);
       width: 100%;
-      height: 160px; /* ← الحجم الجديد القصير */
+      height: 160px;
       padding: 10px;
       border-radius: 16px;
 
@@ -69,6 +69,7 @@
 
       overflow: hidden;
       text-align: center;
+      position: relative;
     }
 
     .tool-card:hover {
@@ -78,7 +79,7 @@
     }
 
     .tool-icon {
-      font-size: 26px; /* أصغر */
+      font-size: 26px;
       margin-bottom: 4px;
       color: #6d28d9;
     }
@@ -96,6 +97,27 @@
       color: #444;
       line-height: 1.2;
       max-width: 90%;
+    }
+
+    /* كروت قريباً */
+    .soon {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .soon::before {
+      content: "قريباً";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(139, 92, 246, 0.9); /* بنفسجي فاتح */
+      color: white;
+      font-size: 11px;
+      padding: 2px 0;
+      border-radius: 16px 16px 0 0;
+      text-align: center;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -127,11 +149,12 @@
         أدوات PDF
       </h2>
       <p class="text-center text-gray-600 mb-12">
-        أدوات PDF سريعة وآمنة تعمل مباشرة داخل المتصفح بدون رفع ملفات — خصوصية كاملة وسرعة عالية.
+        أدوات PDF تعمل بالكامل داخل المتصفح بدون رفع ملفات — خصوصية كاملة وسرعة عالية.
       </p>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
+        <!-- مفعّلة -->
         <a href="merge-pdf.html" class="tool-card">
           <i class="fa-solid fa-layer-group tool-icon"></i>
           <div class="tool-title">دمج PDF</div>
@@ -180,6 +203,31 @@
           <div class="tool-desc">تدوير الصفحات.</div>
         </a>
 
+        <!-- قريباً -->
+        <div class="tool-card soon">
+          <i class="fa-solid fa-file-word tool-icon"></i>
+          <div class="tool-title">PDF إلى Word</div>
+          <div class="tool-desc">تحويل PDF إلى Word.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-file-excel tool-icon"></i>
+          <div class="tool-title">PDF إلى Excel</div>
+          <div class="tool-desc">تحويل PDF إلى Excel.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-lock tool-icon"></i>
+          <div class="tool-title">حماية PDF</div>
+          <div class="tool-desc">إضافة كلمة مرور.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-unlock tool-icon"></i>
+          <div class="tool-title">إزالة كلمة المرور</div>
+          <div class="tool-desc">فتح ملفات PDF.</div>
+        </div>
+
       </div>
 
       <!-- IMAGE TOOLS -->
@@ -187,11 +235,12 @@
         أدوات الصور
       </h2>
       <p class="text-center text-gray-600 mb-12">
-        أدوات صور سريعة لمعالجة الصور مباشرة داخل المتصفح بدون فقدان جودة.
+        أدوات صور تعمل داخل المتصفح لمعالجة الصور بدون فقدان جودة.
       </p>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
+        <!-- مفعّلة -->
         <a href="compress-image.html" class="tool-card">
           <i class="fa-solid fa-image tool-icon"></i>
           <div class="tool-title">ضغط الصور</div>
@@ -216,40 +265,73 @@
           <div class="tool-desc">قص الصور بسهولة.</div>
         </a>
 
+        <!-- قريباً -->
+        <div class="tool-card soon">
+          <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
+          <div class="tool-title">تحسين الجودة</div>
+          <div class="tool-desc">رفع دقة الصور.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-droplet tool-icon"></i>
+          <div class="tool-title">إزالة الضوضاء</div>
+          <div class="tool-desc">تنقية الصور.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-file-image tool-icon"></i>
+          <div class="tool-title">HEIC إلى JPG</div>
+          <div class="tool-desc">تحويل HEIC.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-vector-square tool-icon"></i>
+          <div class="tool-title">تحويل إلى SVG</div>
+          <div class="tool-desc">تحويل الصور إلى SVG.</div>
+        </div>
+
       </div>
 
       <!-- AI TOOLS -->
       <h2 class="text-4xl font-bold text-center mt-24 mb-3 text-purple-700">
-        أدوات الذكاء الاصطناعي (قريباً)
+        أدوات الذكاء الاصطناعي
       </h2>
       <p class="text-center text-gray-600 mb-12">
-        أدوات ذكاء اصطناعي متقدمة ستتوفر قريباً — تعمل داخل المتصفح بدون رفع ملفات.
+        أدوات ذكاء اصطناعي تعمل داخل المتصفح — مع أدوات متقدمة قادمة قريباً.
       </p>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        <div class="tool-card opacity-60 cursor-not-allowed">
+        <!-- مفعّلة -->
+        <a href="ai-text-extract.html" class="tool-card">
+          <i class="fa-solid fa-file-lines tool-icon"></i>
+          <div class="tool-title">استخراج النصوص OCR</div>
+          <div class="tool-desc">قراءة النصوص من الصور.</div>
+        </a>
+
+        <!-- قريباً -->
+        <div class="tool-card soon">
           <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
           <div class="tool-title">نص إلى صورة</div>
-          <div class="tool-desc">قريباً — إنشاء صور.</div>
+          <div class="tool-desc">إنشاء صور بالذكاء الاصطناعي.</div>
         </div>
 
-        <div class="tool-card opacity-60 cursor-not-allowed">
+        <div class="tool-card soon">
           <i class="fa-solid fa-user-slash tool-icon"></i>
-          <div class="tool-title">إزالة الخلفية</div>
-          <div class="tool-desc">قريباً — إزالة الخلفية.</div>
+          <div class="tool-title">إزالة الخلفية AI</div>
+          <div class="tool-desc">إزالة الخلفية تلقائياً.</div>
         </div>
 
-        <div class="tool-card opacity-60 cursor-not-allowed">
+        <div class="tool-card soon">
           <i class="fa-solid fa-up-right-and-down-left-from-center tool-icon"></i>
-          <div class="tool-title">تحسين الجودة</div>
-          <div class="tool-desc">قريباً — رفع الدقة.</div>
+          <div class="tool-title">تحسين الجودة AI</div>
+          <div class="tool-desc">رفع دقة الصور.</div>
         </div>
 
-        <div class="tool-card opacity-60 cursor-not-allowed">
-          <i class="fa-solid fa-file-lines tool-icon"></i>
-          <div class="tool-title">استخراج النصوص</div>
-          <div class="tool-desc">قريباً — قراءة النصوص.</div>
+        <div class="tool-card soon">
+          <i class="fa-solid fa-paintbrush tool-icon"></i>
+          <div class="tool-title">تحويل إلى رسم</div>
+          <div class="tool-desc">تحويل الصور لرسومات.</div>
         </div>
 
       </div>

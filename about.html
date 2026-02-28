@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>عن PdfSwift - أدوات PDF وصور تعمل داخل المتصفح</title>
+
+  <meta name="description" content="تعرف على PdfSwift — منصة مجانية لمعالجة ملفات PDF والصور تعمل بالكامل داخل المتصفح بدون رفع ملفات. خصوصية كاملة وسرعة عالية.">
+  <meta name="keywords" content="عن PdfSwift, من نحن, أدوات PDF, معالجة PDF, خصوصية PDF, بدون رفع ملفات">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* البنر */
+    .banner-base {
+      background: #2e1065;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-mid {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 140px;
+      background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
+      background-size: 200% 200%;
+      animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(30px);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    @keyframes midMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes midGlow {
+      0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.07); }
+      100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- الهيدر -->
+  <div id="header-placeholder"></div>
+
+  <!-- البنر -->
+  <section class="banner-base text-white py-24 text-center shadow-xl relative">
+    <div class="banner-mid"></div>
+
+    <h1 class="relative z-10 text-5xl font-bold mb-4 drop-shadow-xl">
+      عن PdfSwift
+    </h1>
+
+    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+      منصة مجانية لمعالجة ملفات PDF والصور — تعمل بالكامل داخل المتصفح بدون رفع ملفات.
+    </p>
+  </section>
+
+  <!-- المحتوى -->
+  <section class="py-20 px-6 container mx-auto">
+
+    <!-- من نحن -->
+    <div class="mb-20 text-center">
+      <h2 class="text-4xl font-bold text-purple-700 mb-6">من نحن؟</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+        PdfSwift هو مشروع يهدف لتقديم أدوات PDF وصور سريعة، مجانية، وآمنة تعمل بالكامل داخل المتصفح.
+        تم تصميم المنصة لتكون بسيطة، فعّالة، وتوفر للمستخدمين تجربة معالجة ملفات بدون الحاجة لرفع أي ملف إلى الإنترنت.
+      </p>
+    </div>
+
+    <!-- كيف يعمل الموقع -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">كيف يعمل PdfSwift؟</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        جميع الأدوات في PdfSwift تعمل باستخدام تقنيات WebAssembly و JavaScript داخل جهازك مباشرة.
+        هذا يعني أن ملفاتك لا تغادر جهازك إطلاقًا — لا يتم رفعها، ولا يتم تخزينها، ولا يتم إرسالها لأي خادم.
+      </p>
+    </div>
+
+    <!-- الخصوصية -->
+    <div class="mb-20 bg-purple-50 p-10 rounded-2xl shadow-md">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">الخصوصية والأمان</h2>
+      <p class="text-gray-700 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+        نحن نؤمن بأن خصوصية المستخدم حق أساسي.  
+        لذلك تم بناء PdfSwift ليعمل بالكامل داخل المتصفح بدون أي عمليات رفع أو تخزين.  
+        كل شيء يحدث محليًا على جهازك — وهذا يجعل استخدام الموقع آمنًا بنسبة 100٪.
+      </p>
+    </div>
+
+    <!-- المميزات -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-10 text-center">مميزات PdfSwift</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-bolt text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">سريع جدًا</h3>
+          <p class="text-gray-600">المعالجة تتم مباشرة على جهازك بدون انتظار رفع أو تحميل.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-shield-halved text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">خصوصية كاملة</h3>
+          <p class="text-gray-600">لا يتم رفع أي ملف — كل شيء يتم محليًا داخل المتصفح.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-mobile-screen text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">يدعم الجوال</h3>
+          <p class="text-gray-600">جميع الأدوات تعمل على الهواتف والأجهزة اللوحية.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-language text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">يدعم العربية</h3>
+          <p class="text-gray-600">واجهة عربية بالكامل وتجربة استخدام سلسة.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-wand-magic-sparkles text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">ذكاء اصطناعي</h3>
+          <p class="text-gray-600">أدوات OCR واستخراج النصوص تعمل داخل المتصفح.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-gift text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">مجاني بالكامل</h3>
+          <p class="text-gray-600">لا اشتراكات — لا تسجيل — لا قيود.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- رسالة من المؤسس -->
+    <div class="mb-20 text-center">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4">رسالة من المؤسس</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+        تم إنشاء PdfSwift بهدف تقديم أدوات قوية وسهلة الاستخدام للجميع،
+        بدون تعقيد وبدون المساس بخصوصية المستخدم.  
+        نؤمن أن الأدوات المفيدة يجب أن تكون متاحة للجميع — بسرعة، وبساطة، وأمان.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- الفوتر -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/layout.js"></script>
+</body>
+</html>

@@ -2,79 +2,102 @@
 
 /* --- CSS Custom Properties (Variables) --- */
 :root {
-  /* Colors */
-  --color-primary: #007bff;     /* اللون الرئيسي (أزرق) */
-  --color-primary-light: #e3f2ff;
-  --color-secondary: #6c757d;   /* لون ثانوي (رمادي) */
-  --color-accent: #ffc107;      /* لون للتنبيهات والشارات (ذهبي) */
-  --color-text: #212529;        /* لون النص الأساسي (داكن) */
-  --color-text-light: #495057;  /* لون نص ثانوي */
-  --color-bg: #ffffff;          /* لون خلفية الموقع */
-  --color-bg-light: #f8f9fa;    /* لون خلفية خفيف (للهيدر والفوتر) */
-  --color-bg-section: #f4f7f6;  /* لون خلفية الأقسام */
-  --color-border: #dee2e6;      /* لون الحدود */
+  /* Futuristic Dark Color Palette */
+  --color-bg-dark: #0F0F1E;       /* Deep Space Blue */
+  --color-bg-card: rgba(255, 255, 255, 0.05); /* Glass morphism card bg */
+  --color-bg-glass: rgba(255, 255, 255, 0.1); /* Glass morphism hover bg */
 
-  /* Typography */
-  --font-family-primary: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-primary: #A78BFA;      /* Vibrant Violet */
+  --color-primary-hover: #8B5CF6; /* Darker Violet */
+  --color-accent: #F59E0B;       /* Amber */
+  --color-accent-hover: #D97706;
+
+  --color-text-primary: #FFFFFF;  /* White */
+  --color-text-secondary: #E2E8F0; /* Light Gray */
+  --color-text-muted: #94A3B8;     /* Muted Gray */
+
+  --color-border: rgba(255, 255, 255, 0.1);
   
-  --font-size-base: 16px;
-  --font-size-sm: 14px;
-  --font-size-lg: 18px;
+  /* Typography - Modern & Clean */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 4rem;
 
-  --line-height-base: 1.6;
-  --line-height-sm: 1.4;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing & Sizing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
   --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
 
-  /* Border Radius */
-  --border-radius-sm: 5px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 2rem;
+  --border-radius-full: 50rem;
+
+  /* Shadows for depth */
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 20px rgba(167, 139, 250, 0.5);
 }
 
 /* --- Global Styles & Typography --- */
 body {
   font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  background-color: var(--color-bg); /* Will be overridden by page styles */
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-dark);
+  /* Futuristic background gradient */
+  background-image: 
+    radial-gradient(at 20% 80%, var(--color-primary) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, var(--color-accent) 0px, transparent 50%),
+    radial-gradient(at 40% 40%, #3B82F6 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: var(--line-height-sm);
-  color: var(--color-text);
-  margin-bottom: var(--spacing-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-4xl); }
+h3 { font-size: var(--font-size-3xl); }
+h4 { font-size: var(--font-size-2xl); }
 
 p {
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-text-light);
+  color: var(--color-text-secondary);
 }
 
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: var(--color-primary-hover);
 }

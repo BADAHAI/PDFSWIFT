@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Meta Tags for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="لوحة تحكم PdfSwift. استخدم أدوات PDF والصور المجانية، وتعرف على أدوات الذكاء الاصطناعي القادمة قريباً.">
+    <title>لوحة التحكم | PdfSwift</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body class="dashboard-page">
+
+    <!-- Header Component (will be loaded by JS) -->
+    <div id="header-placeholder"></div>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <header class="dashboard-header">
+                <h1>مرحباً بك في لوحة الأدوات</h1>
+                <p>اختر الأداة التي تريد استخدامها من القائمة أدناه</p>
+            </header>
+
+            <!-- قسم أدوات PDF -->
+            <section id="pdf-tools">
+                <h2>📄 أدوات PDF</h2>
+                <div class="tools-grid">
+                    <a href="#" class="tool-card" data-tool="pdf-merge">
+                        <span class="tool-icon">🔗</span>
+                        <h4>دمج ملفات PDF</h4>
+                        <p>ادمج عدة ملفات في ملف واحد</p>
+                    </a>
+                    <a href="#" class="tool-card" data-tool="pdf-split">
+                        <span class="tool-icon">✂️</span>
+                        <h4>تقسيم ملف PDF</h4>
+                        <p>افصل ملف PDF إلى عدة صفحات</p>
+                    </a>
+                    <a href="#" class="tool-card" data-tool="pdf-compress">
+                        <span class="tool-icon">🗜️</span>
+                        <h4>ضغط ملف PDF</h4>
+                        <p>قلل حجم الملف دون التأثير على الجودة</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- قسم أدوات الصور -->
+            <section id="image-tools">
+                <h2>🖼️ أدوات الصور</h2>
+                <div class="tools-grid">
+                    <a href="#" class="tool-card" data-tool="img-resize">
+                        <span class="tool-icon">📐</span>
+                        <h4>تغيير الحجم</h4>
+                        <p>غير أبعاد صورتك بسهولة</p>
+                    </a>
+                    <a href="#" class="tool-card" data-tool="img-remove-bg">
+                        <span class="tool-icon">🗑️</span>
+                        <h4>حذف الخلفية</h4>
+                        <p>ازل الخلفية من صورتك بدقة</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- قسم أدوات الذكاء الاصطناعي -->
+            <section id="ai-tools">
+                <h2>🤖 أدوات الذكاء الاصطناعي</h2>
+                <p style="color: #6c757d; margin-bottom: 20px;">هذه الأدوات قيد التطوير وستكون متاحة قريباً!</p>
+                <div class="tools-grid">
+                    <div class="tool-card coming-soon">
+                        <span class="tool-icon">📝</span>
+                        <h4>تلخيص النصوص</h4>
+                        <p>احصل على ملخص دقيق لأي نص</p>
+                        <span class="badge">قريباً</span>
+                    </div>
+                    <div class="tool-card coming-soon">
+                        <span class="tool-icon">💬</span>
+                        <h4>مساعد ذكاء اصطناعي</h4>
+                        <p>اطرح أسئلة واحصل على إجابات فورية</p>
+                        <span class="badge">قريباً</span>
+                    </div>
+                    <div class="tool-card coming-soon">
+                        <span class="tool-icon">🎨</span>
+                        <h4>إنشاء صور من نص</h4>
+                        <p>حوّل أفكارك إلى صور مذهلة</p>
+                        <span class="badge">قريباً</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Component (will be loaded by JS) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/firebase-config.js"></script>
+
+</body>
+</html>

@@ -1,75 +1,159 @@
 /* css/components.css */
 
-/* --- Glassmorphism Card --- */
+/* --- Buttons --- */
+.btn {
+    padding: 12px 28px;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    gap: 8px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-violet);
+}
+
+.btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface-variant);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* --- Cards --- */
 .card {
-  background: var(--color-bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-xl);
-  box-shadow: var(--shadow-glass);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
-    transform: translateY(-12px);
-    background-color: var(--color-bg-glass);
-    box-shadow: var(--shadow-glow-primary);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
 }
 
-/* --- Icon Styling --- */
 .card-icon {
     font-size: 3.5rem;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* --- Modern Buttons --- */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-md) var(--spacing-xl);
-    border-radius: var(--border-radius-full);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    gap: var(--spacing-sm);
+.card h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
 }
 
-.btn-primary {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
-    color: var(--color-text-primary);
-    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.4);
+.card p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    min-height: 60px; /* Align buttons */
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(167, 139, 250, 0.6);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--color-text-primary);
+/* --- Tool Card for Dashboard */
+.tool-card {
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
-    background-color: var(--color-bg-glass);
+.tool-card:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
 }
 
-.btn.disabled {
-    opacity: 0.5;
+.tool-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tool-card h4 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.tool-card p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* --- Coming Soon Tool Card --- */
+.tool-card.coming-soon {
+    opacity: 0.6;
     cursor: not-allowed;
+    background-color: var(--color-surface-variant);
+    border: 2px dashed var(--color-border);
+    position: relative;
+}
+
+.tool-card.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-border);
+}
+
+.tool-card .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* لأنه RTL */
+    background-color: var(--color-accent);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
 }

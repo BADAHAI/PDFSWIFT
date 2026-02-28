@@ -44,7 +44,7 @@
       background-size: 200% 200%;
       animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
       opacity: 0.7;
-      filter: blur(30px);
+      filter: blur(35px);
       border-radius: 999px;
       z-index: 0;
     }
@@ -89,13 +89,13 @@
 
 <body class="bg-white text-gray-800">
 
-  <!-- الهيدر (يبقى ثابت فوق) -->
+  <!-- الهيدر -->
   <div id="header-placeholder"></div>
 
-  <!-- البنر البنفسجي (Sticky مع التمرير) -->
-  <section class="banner-base text-white py-32 text-center shadow-xl fade-in sticky top-0 z-20">
+  <!-- البنر -->
+  <section class="banner-base text-white py-32 text-center shadow-xl fade-in relative">
 
-    <!-- الجزء المتحرك في منتصف البنر -->
+    <!-- الجزء المتحرك في المنتصف -->
     <div class="banner-mid"></div>
 
     <!-- المحتوى فوق الحركة -->

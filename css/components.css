@@ -9,24 +9,24 @@
   border-radius: var(--border-radius-xl);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-glass);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
     background-color: var(--color-bg-glass);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-glow-primary);
+    border-color: var(--color-primary);
 }
 
+/* --- Icon Styling --- */
 .card-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: var(--spacing-lg);
-    filter: drop-shadow(0 0 10px var(--color-primary));
-}
-
-.card h3 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* --- Modern Buttons --- */

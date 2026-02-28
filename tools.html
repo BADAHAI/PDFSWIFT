@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>أدوات PdfSwift - جميع أدوات PDF والصور والذكاء الاصطناعي</title>
+  <title>أدوات PdfSwift - PDF والصور والذكاء الاصطناعي</title>
 
   <meta name="description" content="جميع أدوات PdfSwift لمعالجة ملفات PDF والصور والذكاء الاصطناعي مباشرة داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، تعديل، والمزيد.">
   <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, صور, ضغط الصور, تعديل الصور, ذكاء اصطناعي, PdfSwift">
@@ -15,26 +15,25 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* البنر البنفسجي */
+    /* البنر */
     .banner-base {
       background: #2e1065;
       position: relative;
       overflow: hidden;
     }
 
-    /* الجزء المتحرك في منتصف البنر */
     .banner-mid {
       position: absolute;
-      top: 35%;
+      top: 40%;
       left: 50%;
       transform: translateX(-50%);
-      width: 80%;
-      height: 160px;
+      width: 70%;
+      height: 140px;
       background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
       background-size: 200% 200%;
       animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
       opacity: 0.7;
-      filter: blur(35px);
+      filter: blur(30px);
       border-radius: 999px;
       z-index: 0;
     }
@@ -47,26 +46,43 @@
 
     @keyframes midGlow {
       0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.9; transform: translateX(-50%) scale(1.08); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.07); }
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* كروت الأدوات (مربعة + أصغر) */
+    /* كروت الأدوات (مربعة + شرح + أيقونة أصغر) */
     .tool-card {
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.25);
       transition: 0.35s ease;
       box-shadow: 0 8px 25px rgba(109, 40, 217, 0.15);
-      height: 230px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      height: 220px;
+      padding: 20px;
     }
     .tool-card:hover {
-      transform: translateY(-10px) scale(1.03);
+      transform: translateY(-8px) scale(1.02);
       box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
       background: rgba(255, 255, 255, 0.28);
+    }
+
+    .tool-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+      color: #6d28d9;
+    }
+
+    .tool-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #6d28d9;
+      margin-bottom: 6px;
+    }
+
+    .tool-desc {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -77,7 +93,7 @@
   <div id="header-placeholder"></div>
 
   <!-- البنر -->
-  <section class="banner-base text-white py-28 text-center shadow-xl relative">
+  <section class="banner-base text-white py-24 text-center shadow-xl relative">
     <div class="banner-mid"></div>
 
     <h1 class="relative z-10 text-5xl font-medium mb-4 drop-shadow-xl">
@@ -85,7 +101,7 @@
     </h1>
 
     <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
-      كل أدوات PDF والصور والذكاء الاصطناعي — تعمل مباشرة داخل المتصفح بدون رفع ملفات.
+      أدوات PDF والصور والذكاء الاصطناعي — كلها تعمل داخل المتصفح بدون رفع ملفات.
     </p>
   </section>
 
@@ -94,109 +110,125 @@
     <div class="container mx-auto px-6">
 
       <!-- PDF TOOLS -->
-      <h2 class="text-4xl font-medium text-center mb-16 text-purple-700">
+      <h2 class="text-4xl font-medium text-center mb-12 text-purple-700">
         أدوات PDF
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <a href="merge-pdf.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-layer-group text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">دمج PDF</h3>
+          <i class="fa-solid fa-layer-group tool-icon"></i>
+          <div class="tool-title">دمج PDF</div>
+          <div class="tool-desc">دمج عدة ملفات PDF في ملف واحد بسهولة.</div>
         </a>
 
         <a href="split-pdf.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-scissors text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تقسيم PDF</h3>
+          <i class="fa-solid fa-scissors tool-icon"></i>
+          <div class="tool-title">تقسيم PDF</div>
+          <div class="tool-desc">تقسيم ملف PDF إلى صفحات أو أجزاء متعددة.</div>
         </a>
 
         <a href="compress-pdf.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-compress text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">ضغط PDF</h3>
+          <i class="fa-solid fa-compress tool-icon"></i>
+          <div class="tool-title">ضغط PDF</div>
+          <div class="tool-desc">تقليل حجم ملف PDF بدون فقدان الجودة.</div>
         </a>
 
         <a href="pdf-to-images.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-file-image text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">PDF إلى صور</h3>
+          <i class="fa-solid fa-file-image tool-icon"></i>
+          <div class="tool-title">PDF إلى صور</div>
+          <div class="tool-desc">تحويل صفحات PDF إلى صور عالية الجودة.</div>
         </a>
 
         <a href="images-to-pdf.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-images text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">صور إلى PDF</h3>
+          <i class="fa-solid fa-images tool-icon"></i>
+          <div class="tool-title">صور إلى PDF</div>
+          <div class="tool-desc">تحويل مجموعة صور إلى ملف PDF واحد.</div>
         </a>
 
         <a href="remove-pages.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-trash text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">حذف صفحات PDF</h3>
+          <i class="fa-solid fa-trash tool-icon"></i>
+          <div class="tool-title">حذف صفحات</div>
+          <div class="tool-desc">إزالة صفحات محددة من ملف PDF.</div>
         </a>
 
         <a href="reorder-pages.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-arrows-up-down-left-right text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">إعادة ترتيب الصفحات</h3>
+          <i class="fa-solid fa-arrows-up-down-left-right tool-icon"></i>
+          <div class="tool-title">إعادة ترتيب</div>
+          <div class="tool-desc">تغيير ترتيب صفحات ملف PDF بسهولة.</div>
         </a>
 
         <a href="rotate-pdf.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-rotate text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تدوير PDF</h3>
+          <i class="fa-solid fa-rotate tool-icon"></i>
+          <div class="tool-title">تدوير PDF</div>
+          <div class="tool-desc">تدوير صفحات PDF بزاوية 90° أو 180°.</div>
         </a>
 
       </div>
 
       <!-- IMAGE TOOLS -->
-      <h2 class="text-4xl font-medium text-center mt-24 mb-16 text-purple-700">
+      <h2 class="text-4xl font-medium text-center mt-24 mb-12 text-purple-700">
         أدوات الصور
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <a href="compress-image.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-image text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">ضغط الصور</h3>
+          <i class="fa-solid fa-image tool-icon"></i>
+          <div class="tool-title">ضغط الصور</div>
+          <div class="tool-desc">ضغط الصور مع الحفاظ على الجودة العالية.</div>
         </a>
 
         <a href="resize-image.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-expand text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تغيير الحجم</h3>
+          <i class="fa-solid fa-expand tool-icon"></i>
+          <div class="tool-title">تغيير الحجم</div>
+          <div class="tool-desc">تعديل أبعاد الصور بسهولة ودقة.</div>
         </a>
 
         <a href="convert-image.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-repeat text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تحويل الصور</h3>
+          <i class="fa-solid fa-repeat tool-icon"></i>
+          <div class="tool-title">تحويل الصور</div>
+          <div class="tool-desc">تحويل الصور بين صيغ مختلفة مثل JPG و PNG.</div>
         </a>
 
         <a href="crop-image.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-crop text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">قص الصور</h3>
+          <i class="fa-solid fa-crop tool-icon"></i>
+          <div class="tool-title">قص الصور</div>
+          <div class="tool-desc">قص الصور بسهولة ودقة عالية.</div>
         </a>
 
       </div>
 
       <!-- AI TOOLS -->
-      <h2 class="text-4xl font-medium text-center mt-24 mb-16 text-purple-700">
-        أدوات الذكاء الاصطناعي
+      <h2 class="text-4xl font-medium text-center mt-24 mb-12 text-purple-700">
+        أدوات الذكاء الاصطناعي (قريباً)
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <a href="ai-text-to-image.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-wand-magic-sparkles text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تحويل نص إلى صورة</h3>
-        </a>
+        <div class="tool-card rounded-2xl text-center opacity-60 cursor-not-allowed">
+          <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
+          <div class="tool-title">تحويل نص إلى صورة</div>
+          <div class="tool-desc">قريباً — إنشاء صور بالذكاء الاصطناعي.</div>
+        </div>
 
-        <a href="ai-remove-bg.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-user-slash text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">إزالة الخلفية</h3>
-        </a>
+        <div class="tool-card rounded-2xl text-center opacity-60 cursor-not-allowed">
+          <i class="fa-solid fa-user-slash tool-icon"></i>
+          <div class="tool-title">إزالة الخلفية</div>
+          <div class="tool-desc">قريباً — إزالة الخلفية تلقائياً.</div>
+        </div>
 
-        <a href="ai-upscale.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-up-right-and-down-left-from-center text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">تحسين جودة الصور</h3>
-        </a>
+        <div class="tool-card rounded-2xl text-center opacity-60 cursor-not-allowed">
+          <i class="fa-solid fa-up-right-and-down-left-from-center tool-icon"></i>
+          <div class="tool-title">تحسين الجودة</div>
+          <div class="tool-desc">قريباً — رفع دقة الصور بالذكاء الاصطناعي.</div>
+        </div>
 
-        <a href="ai-text-extract.html" class="tool-card rounded-2xl text-center block">
-          <i class="fa-solid fa-file-lines text-5xl text-purple-600 mb-4"></i>
-          <h3 class="text-xl font-medium text-purple-700">استخراج النصوص من الصور</h3>
-        </a>
+        <div class="tool-card rounded-2xl text-center opacity-60 cursor-not-allowed">
+          <i class="fa-solid fa-file-lines tool-icon"></i>
+          <div class="tool-title">استخراج النصوص</div>
+          <div class="tool-desc">قريباً — قراءة النصوص من الصور.</div>
+        </div>
 
       </div>
 

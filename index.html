@@ -6,12 +6,8 @@
 
   <title>PdfSwift - أدوات PDF وصور مجانية عبر المتصفح</title>
   <meta name="description" content="PdfSwift يقدم أدوات مجانية للتعامل مع ملفات PDF والصور مباشرة من المتصفح بدون تسجيل." />
-  <meta name="keywords" content="PDF, دمج PDF, ضغط PDF, تحويل PDF, أدوات PDF, صور" />
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -27,56 +23,46 @@
   <section class="py-24 text-center">
     <h1 class="text-4xl font-bold text-gray-900">أدوات PDF وصور، بسيطة وسريعة</h1>
     <p class="mt-4 text-gray-600 max-w-xl mx-auto">
-      جميع الأدوات في صفحة واحدة — بدون تسجيل — بدون رفع ملفات.
+      PdfSwift يوفر مجموعة أدوات مجانية تعمل بالكامل داخل المتصفح بدون أي اتصال خارجي.
     </p>
+
+    <a href="/PdfSwift/tools.html"
+       class="mt-8 inline-block bg-indigo-600 text-white px-8 py-3 rounded-xl text-lg font-semibold shadow-md hover:bg-indigo-700 transition">
+      جرّب الأدوات مجاناً الآن
+    </a>
   </section>
 
-  <!-- Tools -->
-  <section id="tools" class="container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold text-center mb-12">جميع الأدوات</h2>
+  <!-- Features -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-gray-900">مزايا PdfSwift</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
 
-      <!-- مثال أداة -->
-      <div onclick="openToolModal('pdf-merge-tool')"
-           class="cursor-pointer bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-        <i class="fa-solid fa-file-pdf text-indigo-600 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold">دمج ملفات PDF</h3>
-        <p class="text-gray-600 text-sm mt-2">ادمج عدة ملفات PDF في ملف واحد.</p>
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+          <i class="fa-solid fa-bolt text-indigo-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">سريع جداً</h3>
+          <p class="text-gray-600 text-sm">جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+          <i class="fa-solid fa-shield-halved text-indigo-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">خصوصية كاملة</h3>
+          <p class="text-gray-600 text-sm">ملفاتك لا تغادر جهازك إطلاقاً.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+          <i class="fa-solid fa-wand-magic-sparkles text-indigo-600 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">سهولة الاستخدام</h3>
+          <p class="text-gray-600 text-sm">واجهة بسيطة وواضحة بدون أي تعقيد.</p>
+        </div>
+
       </div>
-
     </div>
   </section>
-
-  <!-- Hidden tool content -->
-  <div id="pdf-merge-tool" class="hidden">
-    <div class="flex items-center gap-3 mb-4">
-      <img src="assets/logo.png" class="w-10 h-10">
-      <h3 class="text-2xl font-bold">دمج ملفات PDF</h3>
-    </div>
-
-    <input type="file" multiple class="border p-3 rounded w-full">
-    <button class="mt-4 bg-indigo-600 text-white px-6 py-2 rounded">دمج الآن</button>
-  </div>
-
-  <!-- Modal -->
-  <div id="tool-modal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center p-4">
-    <div class="bg-white p-6 rounded-xl w-full max-w-xl relative">
-
-      <button onclick="closeToolModal()" class="absolute top-3 left-3 text-gray-500 text-xl">
-        ✕
-      </button>
-
-      <div id="tool-content"></div>
-
-    </div>
-  </div>
 
   <div id="footer-placeholder"></div>
 
   <script src="js/layout.js"></script>
-  <script src="js/modal.js"></script>
-  <script src="js/tools.js"></script>
-
 </body>
 </html>

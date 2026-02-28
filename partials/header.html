@@ -1,20 +1,20 @@
 <header class="w-full py-4 bg-white shadow-sm">
   <div class="container mx-auto px-6 flex justify-between items-center">
 
-    <!-- الشعار: أيقونة بأسلوب Swift + نص PdfSwift -->
+    <!-- الشعار: Swift Style + Purple Gradient -->
     <a href="/PdfSwift/index.html" class="flex items-center gap-3">
 
-      <!-- شعار Svg بأسلوب Swift -->
+      <!-- Swift-style Purple Logo -->
       <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="swiftStyle" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FF6B00"/>
-            <stop offset="100%" stop-color="#FF3B30"/>
+          <linearGradient id="swiftPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8B5CF6"/>
+            <stop offset="100%" stop-color="#6D28D9"/>
           </linearGradient>
         </defs>
 
-        <!-- شكل البرق/السويفت -->
-        <path fill="url(#swiftStyle)" d="
+        <!-- Lightning / Swift shape -->
+        <path fill="url(#swiftPurple)" d="
           M42 2
           L18 28
           H32
@@ -24,8 +24,8 @@
           Z
         " style="filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));" />
 
-        <!-- ذيل ديناميكي خفيف -->
-        <path fill="url(#swiftStyle)" opacity="0.35" d="
+        <!-- Dynamic tail -->
+        <path fill="url(#swiftPurple)" opacity="0.35" d="
           M10 40
           C22 48, 34 52, 50 46
           C38 48, 26 44, 10 40
@@ -33,14 +33,14 @@
         " />
       </svg>
 
-      <!-- النص -->
-      <span class="text-2xl md:text-3xl font-extrabold tracking-tight" style="color:#FF4A1F;">
+      <!-- النص البنفسجي بخط جميل وغير بولد -->
+      <span class="text-2xl md:text-3xl font-medium tracking-tight" style="color:#6D28D9;">
         PdfSwift
       </span>
     </a>
 
     <!-- الروابط -->
-    <nav class="space-x-6 space-x-reverse text-sm md:text-base">
+    <nav class="space-x-6 space-x-reverse text-sm md:text-base font-medium">
       <a href="/PdfSwift/tools.html" class="text-gray-600 hover:text-indigo-600">
         الأدوات
       </a>

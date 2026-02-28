@@ -9,25 +9,10 @@
   <meta name="description" content="جميع أدوات PdfSwift لمعالجة ملفات PDF والصور والذكاء الاصطناعي مباشرة داخل المتصفح بدون رفع ملفات. أدوات دمج، تقسيم، ضغط، تحويل، OCR، والمزيد.">
   <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, OCR, صور, ضغط الصور, تعديل الصور, ذكاء اصطناعي, PdfSwift">
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- PDF-LIB -->
-  <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
-
-  <!-- PDF.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-  <!-- Tesseract.js -->
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-
   <style>
-    /* ================================
-       الأساسيات
-    ================================= */
     body { font-family: 'Inter', sans-serif; }
 
     /* البنر */
@@ -65,38 +50,7 @@
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* عناوين الأقسام */
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      color: #6d28d9;
-    }
-
-    .section-desc {
-      text-align: center;
-      color: #555;
-      margin-bottom: 3rem;
-      font-size: 1rem;
-    }
-
-    /* شبكة الأدوات */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    @media (min-width: 640px) {
-      .tools-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (min-width: 1024px) {
-      .tools-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    /* كروت الأدوات */
+    /* كروت الأدوات (قصيرة + مربعة + متناسقة) */
     .tool-card {
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(14px);
@@ -115,7 +69,6 @@
 
       overflow: hidden;
       text-align: center;
-      cursor: pointer;
       position: relative;
     }
 
@@ -152,94 +105,19 @@
       pointer-events: none;
     }
 
-    .soon-badge {
+    .soon::before {
+      content: "قريباً";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(139, 92, 246, 0.9);
+      background: rgba(139, 92, 246, 0.9); /* بنفسجي فاتح */
       color: white;
       font-size: 11px;
       padding: 2px 0;
       border-radius: 16px 16px 0 0;
       text-align: center;
       font-weight: 600;
-    }
-
-    /* المودال */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .hidden { display: none; }
-
-    .modal-content {
-      width: 90%;
-      max-width: 480px;
-      padding: 25px;
-      border-radius: 18px;
-
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 10px 40px rgba(109, 40, 217, 0.35);
-
-      position: relative;
-      text-align: center;
-    }
-
-    .modal-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: #6d28d9;
-      margin-bottom: 20px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 8px;
-      left: 12px;
-      font-size: 22px;
-      color: #fff;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    .file-input {
-      width: 100%;
-      margin-bottom: 20px;
-      padding: 10px;
-      background: white;
-      border-radius: 10px;
-    }
-
-    .tool-options {
-      margin-bottom: 20px;
-      color: #333;
-      font-size: 14px;
-    }
-
-    .action-btn {
-      width: 100%;
-      padding: 12px;
-      background: #6d28d9;
-      color: white;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .action-btn:hover {
-      background: #5b21b6;
     }
   </style>
 </head>
@@ -267,134 +145,193 @@
     <div class="container mx-auto px-6">
 
       <!-- PDF TOOLS -->
-      <h2 class="section-title">أدوات PDF</h2>
-      <p class="section-desc">أدوات PDF تعمل بالكامل داخل المتصفح بدون رفع ملفات — خصوصية كاملة وسرعة عالية.</p>
+      <h2 class="text-4xl font-bold text-center mb-3 text-purple-700">
+        أدوات PDF
+      </h2>
+      <p class="text-center text-gray-600 mb-12">
+        أدوات PDF تعمل بالكامل داخل المتصفح بدون رفع ملفات — خصوصية كاملة وسرعة عالية.
+      </p>
 
-      <div class="tools-grid">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <!-- مفعّلة -->
-        <div class="tool-card" onclick="openTool('merge')">
+        <a href="merge-pdf.html" class="tool-card">
           <i class="fa-solid fa-layer-group tool-icon"></i>
           <div class="tool-title">دمج PDF</div>
           <div class="tool-desc">دمج ملفات PDF بسهولة.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('split')">
+        <a href="split-pdf.html" class="tool-card">
           <i class="fa-solid fa-scissors tool-icon"></i>
           <div class="tool-title">تقسيم PDF</div>
           <div class="tool-desc">تقسيم PDF لصفحات.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('compress')">
+        <a href="compress-pdf.html" class="tool-card">
           <i class="fa-solid fa-compress tool-icon"></i>
           <div class="tool-title">ضغط PDF</div>
           <div class="tool-desc">تقليل حجم PDF.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('pdfToImages')">
+        <a href="pdf-to-images.html" class="tool-card">
           <i class="fa-solid fa-file-image tool-icon"></i>
           <div class="tool-title">PDF إلى صور</div>
           <div class="tool-desc">تحويل PDF لصور.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('imagesToPdf')">
+        <a href="images-to-pdf.html" class="tool-card">
           <i class="fa-solid fa-images tool-icon"></i>
           <div class="tool-title">صور إلى PDF</div>
           <div class="tool-desc">تحويل الصور لملف PDF.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('removePages')">
+        <a href="remove-pages.html" class="tool-card">
           <i class="fa-solid fa-trash tool-icon"></i>
           <div class="tool-title">حذف صفحات</div>
           <div class="tool-desc">إزالة صفحات PDF.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('reorder')">
+        <a href="reorder-pages.html" class="tool-card">
           <i class="fa-solid fa-arrows-up-down-left-right tool-icon"></i>
           <div class="tool-title">إعادة ترتيب</div>
           <div class="tool-desc">ترتيب صفحات PDF.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('rotate')">
+        <a href="rotate-pdf.html" class="tool-card">
           <i class="fa-solid fa-rotate tool-icon"></i>
           <div class="tool-title">تدوير PDF</div>
           <div class="tool-desc">تدوير الصفحات.</div>
-        </div>
+        </a>
 
         <!-- قريباً -->
         <div class="tool-card soon">
-          <div class="soon-badge">قريباً</div>
           <i class="fa-solid fa-file-word tool-icon"></i>
           <div class="tool-title">PDF إلى Word</div>
           <div class="tool-desc">تحويل PDF إلى Word.</div>
         </div>
 
         <div class="tool-card soon">
-          <div class="soon-badge">قريباً</div>
           <i class="fa-solid fa-file-excel tool-icon"></i>
           <div class="tool-title">PDF إلى Excel</div>
           <div class="tool-desc">تحويل PDF إلى Excel.</div>
         </div>
 
+        <div class="tool-card soon">
+          <i class="fa-solid fa-lock tool-icon"></i>
+          <div class="tool-title">حماية PDF</div>
+          <div class="tool-desc">إضافة كلمة مرور.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-unlock tool-icon"></i>
+          <div class="tool-title">إزالة كلمة المرور</div>
+          <div class="tool-desc">فتح ملفات PDF.</div>
+        </div>
+
       </div>
 
       <!-- IMAGE TOOLS -->
-      <h2 class="section-title">أدوات الصور</h2>
-      <p class="section-desc">أدوات صور تعمل داخل المتصفح لمعالجة الصور بدون فقدان جودة.</p>
+      <h2 class="text-4xl font-bold text-center mt-24 mb-3 text-purple-700">
+        أدوات الصور
+      </h2>
+      <p class="text-center text-gray-600 mb-12">
+        أدوات صور تعمل داخل المتصفح لمعالجة الصور بدون فقدان جودة.
+      </p>
 
-      <div class="tools-grid">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        <div class="tool-card" onclick="openTool('compressImage')">
+        <!-- مفعّلة -->
+        <a href="compress-image.html" class="tool-card">
           <i class="fa-solid fa-image tool-icon"></i>
           <div class="tool-title">ضغط الصور</div>
           <div class="tool-desc">ضغط الصور بسهولة.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('resizeImage')">
+        <a href="resize-image.html" class="tool-card">
           <i class="fa-solid fa-expand tool-icon"></i>
           <div class="tool-title">تغيير الحجم</div>
           <div class="tool-desc">تعديل أبعاد الصور.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('convertImage')">
+        <a href="convert-image.html" class="tool-card">
           <i class="fa-solid fa-repeat tool-icon"></i>
           <div class="tool-title">تحويل الصور</div>
           <div class="tool-desc">تحويل بين الصيغ.</div>
-        </div>
+        </a>
 
-        <div class="tool-card" onclick="openTool('cropImage')">
+        <a href="crop-image.html" class="tool-card">
           <i class="fa-solid fa-crop tool-icon"></i>
           <div class="tool-title">قص الصور</div>
           <div class="tool-desc">قص الصور بسهولة.</div>
-        </div>
+        </a>
 
         <!-- قريباً -->
         <div class="tool-card soon">
-          <div class="soon-badge">قريباً</div>
           <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
           <div class="tool-title">تحسين الجودة</div>
           <div class="tool-desc">رفع دقة الصور.</div>
         </div>
 
-      </div>
-
-      <!-- AI TOOLS -->
-      <h2 class="section-title">أدوات الذكاء الاصطناعي</h2>
-      <p class="section-desc">أدوات ذكاء اصطناعي تعمل داخل المتصفح — مع أدوات متقدمة قادمة قريباً.</p>
-
-      <div class="tools-grid">
-
-        <div class="tool-card" onclick="openTool('ocr')">
-          <i class="fa-solid fa-file-lines tool-icon"></i>
-          <div class="tool-title">استخراج النصوص OCR</div>
-          <div class="tool-desc">قراءة النصوص من الصور.</div>
+        <div class="tool-card soon">
+          <i class="fa-solid fa-droplet tool-icon"></i>
+          <div class="tool-title">إزالة الضوضاء</div>
+          <div class="tool-desc">تنقية الصور.</div>
         </div>
 
         <div class="tool-card soon">
-          <div class="soon-badge">قريباً</div>
+          <i class="fa-solid fa-file-image tool-icon"></i>
+          <div class="tool-title">HEIC إلى JPG</div>
+          <div class="tool-desc">تحويل HEIC.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-vector-square tool-icon"></i>
+          <div class="tool-title">تحويل إلى SVG</div>
+          <div class="tool-desc">تحويل الصور إلى SVG.</div>
+        </div>
+
+      </div>
+
+      <!-- AI TOOLS -->
+      <h2 class="text-4xl font-bold text-center mt-24 mb-3 text-purple-700">
+        أدوات الذكاء الاصطناعي
+      </h2>
+      <p class="text-center text-gray-600 mb-12">
+        أدوات ذكاء اصطناعي تعمل داخل المتصفح — مع أدوات متقدمة قادمة قريباً.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+
+        <!-- مفعّلة -->
+        <a href="ai-text-extract.html" class="tool-card">
+          <i class="fa-solid fa-file-lines tool-icon"></i>
+          <div class="tool-title">استخراج النصوص OCR</div>
+          <div class="tool-desc">قراءة النصوص من الصور.</div>
+        </a>
+
+        <!-- قريباً -->
+        <div class="tool-card soon">
           <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
           <div class="tool-title">نص إلى صورة</div>
           <div class="tool-desc">إنشاء صور بالذكاء الاصطناعي.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-user-slash tool-icon"></i>
+          <div class="tool-title">إزالة الخلفية AI</div>
+          <div class="tool-desc">إزالة الخلفية تلقائياً.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-up-right-and-down-left-from-center tool-icon"></i>
+          <div class="tool-title">تحسين الجودة AI</div>
+          <div class="tool-desc">رفع دقة الصور.</div>
+        </div>
+
+        <div class="tool-card soon">
+          <i class="fa-solid fa-paintbrush tool-icon"></i>
+          <div class="tool-title">تحويل إلى رسم</div>
+          <div class="tool-desc">تحويل الصور لرسومات.</div>
         </div>
 
       </div>
@@ -402,321 +339,9 @@
     </div>
   </section>
 
-  <!-- المودال -->
-  <div id="toolModal" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h2 id="toolTitle" class="modal-title"></h2>
-
-      <input type="file" id="fileInput" class="file-input">
-
-      <div id="toolOptions" class="tool-options"></div>
-
-      <button class="action-btn" onclick="runTool()">تنفيذ</button>
-    </div>
-  </div>
-
   <!-- الفوتر -->
   <div id="footer-placeholder"></div>
 
-  <script>
-    /* ============================================================
-       نظام المودال
-    ============================================================ */
-
-    let currentTool = null;
-
-    function openTool(tool) {
-      currentTool = tool;
-
-      document.getElementById("toolModal").classList.remove("hidden");
-
-      const title = document.getElementById("toolTitle");
-      const options = document.getElementById("toolOptions");
-      const fileInput = document.getElementById("fileInput");
-
-      fileInput.value = "";
-      options.innerHTML = "";
-
-      const toolNames = {
-        merge: "دمج ملفات PDF",
-        split: "تقسيم PDF",
-        compress: "ضغط PDF",
-        pdfToImages: "PDF إلى صور",
-        imagesToPdf: "صور إلى PDF",
-        removePages: "حذف صفحات PDF",
-        reorder: "إعادة ترتيب الصفحات",
-        rotate: "تدوير PDF",
-        compressImage: "ضغط الصور",
-        resizeImage: "تغيير حجم الصور",
-        convertImage: "تحويل الصور",
-        cropImage: "قص الصور",
-        ocr: "استخراج النصوص OCR"
-      };
-
-      title.innerText = toolNames[tool] || "أداة";
-
-      if (tool === "split") {
-        options.innerHTML = `
-          <label>رقم الصفحة:</label>
-          <input type="number" id="pageNumber" class="file-input" placeholder="مثال: 1">
-        `;
-      }
-
-   if (tool === "rotate") {
-  options.innerHTML = `
-    <label>زاوية التدوير:</label>
-    <select id="rotateAngle" class="file-input">
-      <option value="90">90°</option>
-      <option value="180">180°</option>
-      <option value="270">270°</option>
-    </select>
-  `;
-}
-
-if (tool === "resizeImage") {
-  options.innerHTML = `
-    <label>العرض الجديد (px):</label>
-    <input type="number" id="newWidth" class="file-input">
-
-    <label>الارتفاع الجديد (px):</label>
-    <input type="number" id="newHeight" class="file-input">
-  `;
-}
-
-if (tool === "convertImage") {
-  options.innerHTML = `
-    <label>اختر الصيغة:</label>
-    <select id="convertFormat" class="file-input">
-      <option value="image/jpeg">JPG</option>
-      <option value="image/png">PNG</option>
-      <option value="image/webp">WEBP</option>
-    </select>
-  `;
-}
-
-if (tool === "ocr") {
-  options.innerHTML = `
-    <p>يدعم العربية والإنجليزية</p>
-  `;
-}
-}
-/* ============================================================
-   أدوات PDF (pdf-lib + pdf.js)
-============================================================ */
-
-// دمج PDF
-async function mergePDF(files) {
-  const mergedPdf = await PDFLib.PDFDocument.create();
-
-  for (let file of files) {
-    const bytes = await file.arrayBuffer();
-    const pdf = await PDFLib.PDFDocument.load(bytes);
-    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-    pages.forEach(p => mergedPdf.addPage(p));
-  }
-
-  return await mergedPdf.save();
-}
-
-// تقسيم PDF
-async function splitPDF(file, pageNumber) {
-  const bytes = await file.arrayBuffer();
-  const pdf = await PDFLib.PDFDocument.load(bytes);
-
-  const newPdf = await PDFLib.PDFDocument.create();
-  const [page] = await newPdf.copyPages(pdf, [pageNumber - 1]);
-  newPdf.addPage(page);
-
-  return await newPdf.save();
-}
-
-// تدوير PDF
-async function rotatePDF(file, angle) {
-  const bytes = await file.arrayBuffer();
-  const pdf = await PDFLib.PDFDocument.load(bytes);
-
-  pdf.getPages().forEach(page => page.setRotation(PDFLib.degrees(angle)));
-
-  return await pdf.save();
-}
-/* ============================================================
-   أدوات الصور (Canvas)
-============================================================ */
-
-function loadImage(file) {
-  return new Promise(resolve => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.src = URL.createObjectURL(file);
-  });
-}
-
-// ضغط الصور
-async function compressImage(file) {
-  const img = await loadImage(file);
-  const canvas = document.createElement("canvas");
-  canvas.width = img.width;
-  canvas.height = img.height;
-
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0);
-
-  return await new Promise(resolve => {
-    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.6);
-  });
-}
-
-// تغيير الحجم
-async function resizeImage(file, width, height) {
-  const img = await loadImage(file);
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0, width, height);
-
-  return await new Promise(resolve => {
-    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
-  });
-}
-
-// تحويل الصور
-async function convertImage(file, format) {
-  const img = await loadImage(file);
-  const canvas = document.createElement("canvas");
-  canvas.width = img.width;
-  canvas.height = img.height;
-
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0);
-
-  return await new Promise(resolve => {
-    canvas.toBlob(blob => resolve(blob), format, 0.9);
-  });
-}
-
-// قص الصور
-async function cropImage(file) {
-  const img = await loadImage(file);
-  const canvas = document.createElement("canvas");
-
-  const size = Math.min(img.width, img.height);
-  canvas.width = size;
-  canvas.height = size;
-
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0, size, size, 0, 0, size, size);
-
-  return await new Promise(resolve => {
-    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
-  });
-}
-/* ============================================================
-   OCR (Tesseract.js)
-============================================================ */
-
-async function runOCR(file) {
-  const { createWorker } = Tesseract;
-
-  const worker = await createWorker("ara+eng");
-  const result = await worker.recognize(file);
-  await worker.terminate();
-
-  return result.data.text;
-}
-/* ============================================================
-   تشغيل الأداة المختارة
-============================================================ */
-
-async function runTool() {
-  const fileInput = document.getElementById("fileInput");
-  const files = fileInput.files;
-
-  if (!files.length) {
-    alert("الرجاء رفع ملف أولاً");
-    return;
-  }
-
-  let output;
-  let filename = "output";
-
-  try {
-    switch (currentTool) {
-
-      case "merge":
-        output = await mergePDF(files);
-        filename = "merged.pdf";
-        break;
-
-      case "split":
-        const page = parseInt(document.getElementById("pageNumber").value);
-        output = await splitPDF(files[0], page);
-        filename = "page.pdf";
-        break;
-
-      case "rotate":
-        const angle = parseInt(document.getElementById("rotateAngle").value);
-        output = await rotatePDF(files[0], angle);
-        filename = "rotated.pdf";
-        break;
-
-      case "compressImage":
-        output = await compressImage(files[0]);
-        filename = "compressed.jpg";
-        break;
-
-      case "resizeImage":
-        const w = parseInt(document.getElementById("newWidth").value);
-        const h = parseInt(document.getElementById("newHeight").value);
-        output = await resizeImage(files[0], w, h);
-        filename = "resized.jpg";
-        break;
-
-      case "convertImage":
-        const format = document.getElementById("convertFormat").value;
-        output = await convertImage(files[0], format);
-        filename = "converted." + format.split("/")[1];
-        break;
-
-      case "cropImage":
-        output = await cropImage(files[0]);
-        filename = "cropped.jpg";
-        break;
-
-      case "ocr":
-        const text = await runOCR(files[0]);
-        downloadText(text, "extracted.txt");
-        closeModal();
-        return;
-    }
-
-    downloadFile(output, filename);
-    closeModal();
-
-  } catch (err) {
-    console.error(err);
-    alert("حدث خطأ أثناء تنفيذ العملية");
-  }
-}
-/* ============================================================
-   تنزيل الملفات
-============================================================ */
-
-function downloadFile(bytes, filename) {
-  const blob = bytes instanceof Blob ? bytes : new Blob([bytes]);
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-
-  URL.revokeObjectURL(url);
-}
-
-function downloadText(text, filename) {
-  const blob = new Blob([text], { type: "text/plain" });
-  downloadFile(blob, filename);
-}
+  <script src="js/layout.js"></script>
+</body>
+</html>

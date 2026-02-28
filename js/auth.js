@@ -165,3 +165,6 @@ if (window.location.hash.includes('access_token')) {
         }
     });
 }
+
+// --- تصدير الدوال ليتم استخدامها في ملفات أخرى ---
+export { supabase }; // تصدير عميل supabase للاستخدام في الأدوات

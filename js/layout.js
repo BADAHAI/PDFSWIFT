@@ -1,25 +1,14 @@
-// js/main.js
-
-// دالة لجلب وتضمين ملف HTML في عنصر معين
-async function includeHTML(url, elementId) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const html = await response.text();
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.innerHTML = html;
-        }
-    } catch (error) {
-        console.error(`Error loading component from ${url}:`, error);
-    }
+async function loadPartial(id, file) {
+  try {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+  } catch (e) {
+    console.error("Error loading partial:", file, e);
+  }
 }
 
-// يتم تشغيل هذا الكود بعد اكتمال تحميل الصفحة بالكامل
-document.addEventListener('DOMContentLoaded', () => {
-    // تحميل الهيدر والفوتر
-    includeHTML('components/header.html', 'header-placeholder');
-    includeHTML('components/footer.html', 'footer-placeholder');
+document.addEventListener("DOMContentLoaded", () => {
+  loadPartial("header-placeholder", "/PdfSwift/partials/header.html");
+  loadPartial("footer-placeholder", "/PdfSwift/partials/footer.html");
 });

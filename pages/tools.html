@@ -101,14 +101,77 @@
     <!-- Footer Component (will be loaded by JS) -->
     <div id="footer-placeholder"></div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
-    
     <!-- JavaScript Files -->
-    <script src="../js/main.js"></script>
-    <script src="../js/auth.js"></script>
-    <script src="../js/firebase-config.js"></script>
+    <script type="module" src="../js/supabase-config.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/auth.js"></script>
 
+    <!-- منطق التحقق الخاص بصفحة الأدوات -->
+    <script type="module">
+        // استيراد عميل supabase
+        import { supabase } from '../js/supabase-config.js';
+
+        // --- عناصر DOM الخاصة بصفحة الأدوات ---
+        const loginContainer = document.getElementById('login-container');
+        const userProfile = document.getElementById('user-profile');
+        const userNameEl = document.getElementById('user-name');
+        const userAvatarEl = document.getElementById('user-avatar');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // --- منطق التحكم في عرض المستخدم ---
+        async function setupPage() {
+            // جلب بيانات المستخدم الحالي
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (user) {
+                // المستخدم مسجل دخوله: إظهار معلوماته
+                if (loginContainer) loginContainer.style.display = 'none';
+                if (userProfile) userProfile.style.display = 'flex';
+
+                const userName = user.user_metadata?.full_name || user.email || 'مستخدم';
+                const userAvatar = user.user_metadata?.avatar_url || '../assets/images/default-avatar.png';
+
+                if (userNameEl) userNameEl.textContent = userName;
+                if (userAvatarEl) userAvatarEl.src = userAvatar;
+
+            } else {
+                // المستخدم ليس مسجلاً دخوله: إعادة توجيهه إلى صفحة المصادقة
+                console.log('المستخدم غير مسجل دخوله، سيتم التوجيه إلى صفحة المصادقة.');
+                window.location.href = '../pages/auth.html';
+            }
+        }
+
+        // --- دالة تسجيل الخروج ---
+        async function signOut() {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                console.error('خطأ في تسجيل الخروج:', error.message);
+            } else {
+                window.location.href = '../index.html';
+            }
+        }
+
+        // --- إضافة مستمعي الأحداث ---
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', signOut);
+        }
+        
+        // قائمة الملف الشخصي المنسدلة (تم نقلها هنا لتعمل في صفحة الأدوات)
+        if (userProfile) {
+            userProfile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const menu = document.getElementById('profile-menu');
+                if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            window.addEventListener('click', () => {
+                const menu = document.getElementById('profile-menu');
+                if(menu) menu.style.display = 'none';
+            });
+        }
+
+        // تشغيل الدالة عند تحميل الصفحة
+        setupPage();
+    </script>
 </body>
 </html>

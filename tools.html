@@ -463,9 +463,260 @@
         `;
       }
 
-      if (tool === "rotate") {
-        options.innerHTML = `
-          <label>زاوية التدوير:</label>
-          <select id="rotateAngle" class="file-input">
-            <option value="90">90°</option>
-            <option value="180">180°</
+   if (tool === "rotate") {
+  options.innerHTML = `
+    <label>زاوية التدوير:</label>
+    <select id="rotateAngle" class="file-input">
+      <option value="90">90°</option>
+      <option value="180">180°</option>
+      <option value="270">270°</option>
+    </select>
+  `;
+}
+
+if (tool === "resizeImage") {
+  options.innerHTML = `
+    <label>العرض الجديد (px):</label>
+    <input type="number" id="newWidth" class="file-input">
+
+    <label>الارتفاع الجديد (px):</label>
+    <input type="number" id="newHeight" class="file-input">
+  `;
+}
+
+if (tool === "convertImage") {
+  options.innerHTML = `
+    <label>اختر الصيغة:</label>
+    <select id="convertFormat" class="file-input">
+      <option value="image/jpeg">JPG</option>
+      <option value="image/png">PNG</option>
+      <option value="image/webp">WEBP</option>
+    </select>
+  `;
+}
+
+if (tool === "ocr") {
+  options.innerHTML = `
+    <p>يدعم العربية والإنجليزية</p>
+  `;
+}
+}
+/* ============================================================
+   أدوات PDF (pdf-lib + pdf.js)
+============================================================ */
+
+// دمج PDF
+async function mergePDF(files) {
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for (let file of files) {
+    const bytes = await file.arrayBuffer();
+    const pdf = await PDFLib.PDFDocument.load(bytes);
+    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    pages.forEach(p => mergedPdf.addPage(p));
+  }
+
+  return await mergedPdf.save();
+}
+
+// تقسيم PDF
+async function splitPDF(file, pageNumber) {
+  const bytes = await file.arrayBuffer();
+  const pdf = await PDFLib.PDFDocument.load(bytes);
+
+  const newPdf = await PDFLib.PDFDocument.create();
+  const [page] = await newPdf.copyPages(pdf, [pageNumber - 1]);
+  newPdf.addPage(page);
+
+  return await newPdf.save();
+}
+
+// تدوير PDF
+async function rotatePDF(file, angle) {
+  const bytes = await file.arrayBuffer();
+  const pdf = await PDFLib.PDFDocument.load(bytes);
+
+  pdf.getPages().forEach(page => page.setRotation(PDFLib.degrees(angle)));
+
+  return await pdf.save();
+}
+/* ============================================================
+   أدوات الصور (Canvas)
+============================================================ */
+
+function loadImage(file) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ضغط الصور
+async function compressImage(file) {
+  const img = await loadImage(file);
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  return await new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.6);
+  });
+}
+
+// تغيير الحجم
+async function resizeImage(file, width, height) {
+  const img = await loadImage(file);
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, width, height);
+
+  return await new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
+  });
+}
+
+// تحويل الصور
+async function convertImage(file, format) {
+  const img = await loadImage(file);
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  return await new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), format, 0.9);
+  });
+}
+
+// قص الصور
+async function cropImage(file) {
+  const img = await loadImage(file);
+  const canvas = document.createElement("canvas");
+
+  const size = Math.min(img.width, img.height);
+  canvas.width = size;
+  canvas.height = size;
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, size, size, 0, 0, size, size);
+
+  return await new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.9);
+  });
+}
+/* ============================================================
+   OCR (Tesseract.js)
+============================================================ */
+
+async function runOCR(file) {
+  const { createWorker } = Tesseract;
+
+  const worker = await createWorker("ara+eng");
+  const result = await worker.recognize(file);
+  await worker.terminate();
+
+  return result.data.text;
+}
+/* ============================================================
+   تشغيل الأداة المختارة
+============================================================ */
+
+async function runTool() {
+  const fileInput = document.getElementById("fileInput");
+  const files = fileInput.files;
+
+  if (!files.length) {
+    alert("الرجاء رفع ملف أولاً");
+    return;
+  }
+
+  let output;
+  let filename = "output";
+
+  try {
+    switch (currentTool) {
+
+      case "merge":
+        output = await mergePDF(files);
+        filename = "merged.pdf";
+        break;
+
+      case "split":
+        const page = parseInt(document.getElementById("pageNumber").value);
+        output = await splitPDF(files[0], page);
+        filename = "page.pdf";
+        break;
+
+      case "rotate":
+        const angle = parseInt(document.getElementById("rotateAngle").value);
+        output = await rotatePDF(files[0], angle);
+        filename = "rotated.pdf";
+        break;
+
+      case "compressImage":
+        output = await compressImage(files[0]);
+        filename = "compressed.jpg";
+        break;
+
+      case "resizeImage":
+        const w = parseInt(document.getElementById("newWidth").value);
+        const h = parseInt(document.getElementById("newHeight").value);
+        output = await resizeImage(files[0], w, h);
+        filename = "resized.jpg";
+        break;
+
+      case "convertImage":
+        const format = document.getElementById("convertFormat").value;
+        output = await convertImage(files[0], format);
+        filename = "converted." + format.split("/")[1];
+        break;
+
+      case "cropImage":
+        output = await cropImage(files[0]);
+        filename = "cropped.jpg";
+        break;
+
+      case "ocr":
+        const text = await runOCR(files[0]);
+        downloadText(text, "extracted.txt");
+        closeModal();
+        return;
+    }
+
+    downloadFile(output, filename);
+    closeModal();
+
+  } catch (err) {
+    console.error(err);
+    alert("حدث خطأ أثناء تنفيذ العملية");
+  }
+}
+/* ============================================================
+   تنزيل الملفات
+============================================================ */
+
+function downloadFile(bytes, filename) {
+  const blob = bytes instanceof Blob ? bytes : new Blob([bytes]);
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+function downloadText(text, filename) {
+  const blob = new Blob([text], { type: "text/plain" });
+  downloadFile(blob, filename);
+}

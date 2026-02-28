@@ -10,12 +10,6 @@
   <meta name="keywords" content="PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, أدوات PDF, أدوات صور, ضغط الصور, تغيير حجم الصور, PdfSwift">
   <meta name="author" content="PdfSwift">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="PdfSwift - أدوات PDF وصور مجانية عبر المتصفح">
-  <meta property="og:description" content="مجموعة أدوات مجانية لمعالجة PDF والصور بدون رفع ملفات. خصوصية كاملة وسرعة عالية.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://badahai.github.io/PdfSwift/">
-
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -25,14 +19,14 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* البنر البنفسجي الأساسي */
+    /* البنر البنفسجي */
     .banner-base {
-      background: #2e1065; /* بنفسجي غامق */
+      background: #2e1065;
       position: relative;
       overflow: hidden;
     }
 
-    /* الجزء المتحرك في منتصف البنر فقط */
+    /* الجزء المتحرك في منتصف البنر */
     .banner-mid {
       position: absolute;
       top: 35%;
@@ -61,7 +55,7 @@
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* كروت زجاجية محسّنة */
+    /* كروت زجاجية */
     .glass-card {
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(14px);
@@ -74,16 +68,6 @@
       box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
       background: rgba(255, 255, 255, 0.28);
     }
-
-    /* حركة دخول */
-    .fade-in {
-      animation: fadeIn 1.2s ease forwards;
-      opacity: 0;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(20px); }
-    }
   </style>
 </head>
 
@@ -93,12 +77,10 @@
   <div id="header-placeholder"></div>
 
   <!-- البنر -->
-  <section class="banner-base text-white py-32 text-center shadow-xl fade-in relative">
+  <section class="banner-base text-white py-32 text-center shadow-xl relative">
 
-    <!-- الجزء المتحرك في المنتصف -->
     <div class="banner-mid"></div>
 
-    <!-- المحتوى فوق الحركة -->
     <h1 class="relative z-10 text-5xl font-medium mb-6 drop-shadow-xl">
       أدوات PDF وصور، بسيطة وسريعة
     </h1>
@@ -114,18 +96,17 @@
     </a>
   </section>
 
-  <!-- قسم المزايا -->
+  <!-- المزايا -->
   <section id="about" class="py-24">
     <div class="container mx-auto px-6">
 
-      <h2 class="text-4xl font-medium text-center mb-16 fade-in text-purple-700">
+      <h2 class="text-4xl font-medium text-center mb-16 text-purple-700">
         لماذا PdfSwift؟
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-        <!-- Card 1 -->
-        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+        <div class="glass-card p-12 rounded-2xl text-center">
           <i class="fa-solid fa-bolt text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">سرعة خارقة</h3>
           <p class="text-gray-700 text-sm leading-relaxed">
@@ -133,8 +114,7 @@
           </p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+        <div class="glass-card p-12 rounded-2xl text-center">
           <i class="fa-solid fa-shield-halved text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">خصوصية كاملة</h3>
           <p class="text-gray-700 text-sm leading-relaxed">
@@ -142,8 +122,7 @@
           </p>
         </div>
 
-        <!-- Card 3 -->
-        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+        <div class="glass-card p-12 rounded-2xl text-center">
           <i class="fa-solid fa-wand-magic-sparkles text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">سهولة الاستخدام</h3>
           <p class="text-gray-700 text-sm leading-relaxed">

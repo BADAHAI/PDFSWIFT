@@ -13,29 +13,49 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* حركة البنر */
-    .animated-bg {
-      background: linear-gradient(120deg, #7c3aed, #6d28d9, #8b5cf6);
+    /* خلفية البنر المتحركة */
+    .banner-bg {
+      background: linear-gradient(135deg, #4c1d95, #5b21b6, #6d28d9, #7c3aed);
       background-size: 300% 300%;
-      animation: moveBg 8s ease infinite;
+      animation: bannerMove 10s ease infinite;
+      position: relative;
+      overflow: hidden;
     }
-    @keyframes moveBg {
+    @keyframes bannerMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* كروت زجاجية */
+    /* موجات خلفية */
+    .banner-bg::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff22" d="M0 67 C 273 183 441 -53 800 67 L800 0 L0 0 Z"></path></svg>');
+      animation: waveMove 6s linear infinite;
+      opacity: 0.4;
+    }
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-200px); }
+    }
+
+    /* كروت زجاجية محسّنة */
     .glass-card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: 0.3s;
+      transition: 0.35s ease;
+      box-shadow: 0 8px 25px rgba(109, 40, 217, 0.15);
     }
     .glass-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(109, 40, 217, 0.25);
-      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
+      background: rgba(255, 255, 255, 0.28);
     }
 
     /* حركة دخول */
@@ -56,8 +76,8 @@
   <div id="header-placeholder"></div>
 
   <!-- البنر البنفسجي -->
-  <section class="animated-bg text-white py-28 text-center shadow-lg fade-in">
-    <h1 class="text-5xl font-medium mb-6 drop-shadow-lg">
+  <section class="banner-bg text-white py-32 text-center fade-in shadow-xl">
+    <h1 class="text-5xl font-medium mb-6 drop-shadow-xl">
       أدوات PDF وصور، بسيطة وسريعة
     </h1>
 
@@ -73,18 +93,18 @@
   </section>
 
   <!-- قسم المزايا -->
-  <section id="about" class="py-20">
+  <section id="about" class="py-24">
     <div class="container mx-auto px-6">
 
-      <h2 class="text-4xl font-medium text-center mb-14 fade-in text-purple-700">
+      <h2 class="text-4xl font-medium text-center mb-16 fade-in text-purple-700">
         لماذا PdfSwift؟
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
         <!-- Card 1 -->
-        <div class="glass-card p-10 rounded-2xl fade-in text-center">
-          <i class="fa-solid fa-bolt text-5xl text-purple-600 mb-6"></i>
+        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+          <i class="fa-solid fa-bolt text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">سرعة خارقة</h3>
           <p class="text-gray-700 text-sm leading-relaxed">
             جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات، مما يجعلها أسرع من الخدمات التقليدية.
@@ -92,8 +112,8 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="glass-card p-10 rounded-2xl fade-in text-center">
-          <i class="fa-solid fa-shield-halved text-5xl text-purple-600 mb-6"></i>
+        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+          <i class="fa-solid fa-shield-halved text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">خصوصية كاملة</h3>
           <p class="text-gray-700 text-sm leading-relaxed">
             ملفاتك لا تغادر جهازك إطلاقاً — كل المعالجة تتم محلياً داخل المتصفح.
@@ -101,8 +121,8 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="glass-card p-10 rounded-2xl fade-in text-center">
-          <i class="fa-solid fa-wand-magic-sparkles text-5xl text-purple-600 mb-6"></i>
+        <div class="glass-card p-12 rounded-2xl fade-in text-center">
+          <i class="fa-solid fa-wand-magic-sparkles text-6xl text-purple-600 mb-6"></i>
           <h3 class="text-2xl font-medium mb-3 text-purple-700">سهولة الاستخدام</h3>
           <p class="text-gray-700 text-sm leading-relaxed">
             واجهة بسيطة وواضحة، مصممة لتساعدك على إنجاز مهامك بسرعة وبدون تعقيد.

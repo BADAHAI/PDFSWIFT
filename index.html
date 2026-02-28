@@ -12,49 +12,88 @@
 
   <style>
     body { font-family: 'Inter', sans-serif; }
+
+    /* حركة دخول */
+    .fade-in {
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+
+    /* كروت زجاجية */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: 0.3s;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(109, 40, 217, 0.25);
+      background: rgba(255, 255, 255, 0.25);
+    }
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900 text-white">
 
   <div id="header-placeholder"></div>
 
-  <!-- Hero -->
-  <section class="py-24 text-center">
-    <h1 class="text-4xl font-bold text-gray-900">أدوات PDF وصور، بسيطة وسريعة</h1>
-    <p class="mt-4 text-gray-600 max-w-xl mx-auto">
-      PdfSwift يوفر مجموعة أدوات مجانية تعمل بالكامل داخل المتصفح بدون أي اتصال خارجي.
+  <!-- Hero Section -->
+  <section class="py-28 text-center fade-in">
+    <h1 class="text-5xl font-medium mb-6 drop-shadow-lg">
+      أدوات PDF وصور، بسيطة وسريعة
+    </h1>
+
+    <p class="text-lg text-purple-200 max-w-2xl mx-auto leading-relaxed">
+      PdfSwift يوفر مجموعة أدوات مجانية تعمل بالكامل داخل المتصفح  
+      بدون أي اتصال خارجي — خصوصية كاملة وسرعة عالية.
     </p>
 
     <a href="/PdfSwift/tools.html"
-       class="mt-8 inline-block bg-indigo-600 text-white px-8 py-3 rounded-xl text-lg font-semibold shadow-md hover:bg-indigo-700 transition">
+       class="mt-10 inline-block bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 px-10 py-4 rounded-2xl text-xl font-medium shadow-xl transition">
       جرّب الأدوات مجاناً الآن
     </a>
   </section>
 
-  <!-- Features -->
-  <section id="about" class="py-20 bg-white">
+  <!-- Features Section -->
+  <section id="about" class="py-20">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-gray-900">مزايا PdfSwift</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+      <h2 class="text-4xl font-medium text-center mb-14 fade-in">
+        لماذا PdfSwift؟
+      </h2>
 
-        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-          <i class="fa-solid fa-bolt text-indigo-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">سريع جداً</h3>
-          <p class="text-gray-600 text-sm">جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <!-- Card 1 -->
+        <div class="glass-card p-8 rounded-2xl fade-in">
+          <i class="fa-solid fa-bolt text-5xl text-purple-300 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3">سرعة خارقة</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات، مما يجعلها أسرع من الخدمات التقليدية.
+          </p>
         </div>
 
-        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-          <i class="fa-solid fa-shield-halved text-indigo-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">خصوصية كاملة</h3>
-          <p class="text-gray-600 text-sm">ملفاتك لا تغادر جهازك إطلاقاً.</p>
+        <!-- Card 2 -->
+        <div class="glass-card p-8 rounded-2xl fade-in">
+          <i class="fa-solid fa-shield-halved text-5xl text-purple-300 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3">خصوصية كاملة</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            ملفاتك لا تغادر جهازك إطلاقاً — كل المعالجة تتم محلياً داخل المتصفح.
+          </p>
         </div>
 
-        <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-          <i class="fa-solid fa-wand-magic-sparkles text-indigo-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">سهولة الاستخدام</h3>
-          <p class="text-gray-600 text-sm">واجهة بسيطة وواضحة بدون أي تعقيد.</p>
+        <!-- Card 3 -->
+        <div class="glass-card p-8 rounded-2xl fade-in">
+          <i class="fa-solid fa-wand-magic-sparkles text-5xl text-purple-300 mb-6"></i>
+          <h3 class="text-2xl font-medium mb-3">سهولة الاستخدام</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            واجهة بسيطة وواضحة، مصممة لتساعدك على إنجاز مهامك بسرعة وبدون تعقيد.
+          </p>
         </div>
 
       </div>

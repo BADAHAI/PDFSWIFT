@@ -1,16 +1,17 @@
-<!-- الهيدر العائم -->
-<div class="floating-header" id="floatingHeader">
+<!-- الهيدر العائم الموحد -->
+<div class="floating-header unified-header" id="floatingHeader">
 
-  <!-- زر الهمبرغر -->
-  <button id="menuBtn" class="flex flex-col gap-1.5 group absolute right-4 top-1/2 -translate-y-1/2">
+  <!-- زر الهمبرغر (يسار) -->
+  <button id="menuBtn" class="flex flex-col gap-1.5 group absolute left-4 top-1/2 -translate-y-1/2">
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
   </button>
 
-  <!-- الشعار -->
-  <a href="/PdfSwift/index.html" class="text-white font-bold text-xl">
-    PdfSwift
+  <!-- الشعار + البرق -->
+  <a href="/PdfSwift/index.html" class="flex items-center gap-3">
+    <i class="fa-solid fa-bolt text-white text-xl drop-shadow"></i>
+    <span class="text-white font-bold text-xl shine-text">PdfSwift</span>
   </a>
 
 </div>
@@ -22,7 +23,6 @@
   <div class="p-6 flex flex-col gap-6 text-xl font-semibold text-purple-800">
 
     <a href="/PdfSwift/index.html" class="hover:text-purple-600 transition">الرئيسية</a>
-    <a href="/PdfSwift/tools.html" class="hover:text-purple-600 transition">الأدوات</a>
     <a href="/PdfSwift/about.html" class="hover:text-purple-600 transition">عن الموقع</a>
     <a href="/PdfSwift/privacy.html" class="hover:text-purple-600 transition">الخصوصية</a>
 
@@ -47,7 +47,7 @@
 </script>
 
 <style>
-  /* نفس ستايل الهيدر الأصلي */
+  /* نفس ستايل الصفحة الرئيسية */
   .floating-header {
     position: absolute;
     top: 40px;
@@ -67,8 +67,29 @@
     transition: opacity 0.4s ease;
   }
 
-  .hide-header {
-    opacity: 0;
-    pointer-events: none;
+  /* رفع الهيدر في الصفحات الداخلية فقط */
+  body:not(.home-page) .unified-header {
+    top: 20px !important;
+  }
+
+  /* تأثير اللمعة للشعار */
+  .shine-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+    animation: shineMove 3s infinite;
+  }
+  @keyframes shineMove {
+    0% { left: -120%; }
+    50% { left: 140%; }
+    100% { left: -120%; }
   }
 </style>

@@ -44,3 +44,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, 200); // ننتظر 200ms حتى يتم تحميل الهيدر
 });
+// تشغيل القائمة المنسدلة بعد تحميل الهيدر
+setTimeout(() => {
+  const menuBtn = document.getElementById("menuBtn");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  if (!menuBtn || !dropdownMenu || !menuOverlay) return;
+
+  // فتح القائمة
+  menuBtn.addEventListener("click", () => {
+    dropdownMenu.classList.toggle("hidden");
+    menuOverlay.classList.toggle("hidden");
+  });
+
+  // إغلاق عند الضغط خارجها
+  menuOverlay.addEventListener("click", () => {
+    dropdownMenu.classList.add("hidden");
+    menuOverlay.classList.add("hidden");
+  });
+
+}, 200);

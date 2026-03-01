@@ -1,0 +1,55 @@
+<!-- الهيدر العائم الخاص بالصفحة الرئيسية -->
+<div class="floating-header">
+  <a href="/PdfSwift/index.html" class="text-white font-bold text-xl">
+    PdfSwift
+  </a>
+
+  <nav class="flex items-center gap-6">
+    <a href="/PdfSwift/tools.html" class="text-white hover:text-purple-200 transition">
+      الأدوات
+    </a>
+    <a href="/PdfSwift/about.html" class="text-white hover:text-purple-200 transition">
+      عن الموقع
+    </a>
+  </nav>
+</div>
+
+<style>
+  /* الهيدر العائم */
+  .floating-header {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    z-index: 50;
+    transition: opacity 0.4s ease;
+  }
+
+  /* إخفاء الهيدر عند النزول */
+  .hide-header {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  // إخفاء الهيدر عند النزول
+  const homeHeader = document.querySelector(".floating-header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 120) {
+      homeHeader.classList.add("hide-header");
+    } else {
+      homeHeader.classList.remove("hide-header");
+    }
+  });
+</script>

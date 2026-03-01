@@ -2,167 +2,185 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- تحسين محركات البحث -->
   <title>عن PdfSwift - أدوات PDF وصور تعمل داخل المتصفح</title>
-  <meta name="description" content="تعرف على PdfSwift، منصة مجانية وآمنة لمعالجة ملفات PDF والصور داخل المتصفح بدون رفع الملفات. خصوصية كاملة وسرعة عالية.">
-  <meta name="keywords" content="PDF, أدوات PDF, تحويل PDF, ضغط PDF, تعديل PDF, معالجة PDF, خصوصية, بدون رفع ملفات, WebAssembly">
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <meta name="description" content="تعرف على PdfSwift — منصة مجانية لمعالجة ملفات PDF والصور تعمل بالكامل داخل المتصفح بدون رفع ملفات. خصوصية كاملة وسرعة عالية.">
+  <meta name="keywords" content="عن PdfSwift, من نحن, أدوات PDF, معالجة PDF, خصوصية PDF, بدون رفع ملفات, أمان PDF, PdfSwift">
 
-<body class="bg-gray-50">
-
-  <!-- الهيدر الموحد -->
-  <header class="w-full py-8 bg-white/40 backdrop-blur-xl shadow-md border-b border-white/30 fixed top-0 left-0 z-50">
-    <div class="container mx-auto px-6 flex items-center justify-center relative">
-
-      <!-- زر القائمة (همبرغر) -->
-      <button id="menuBtn" class="absolute left-0 flex flex-col gap-1.5 group">
-        <span class="w-7 h-1 bg-[#4C1D95] rounded transition group-hover:bg-[#6D28D9]"></span>
-        <span class="w-7 h-1 bg-[#4C1D95] rounded transition group-hover:bg-[#6D28D9]"></span>
-        <span class="w-7 h-1 bg-[#4C1D95] rounded transition group-hover:bg-[#6D28D9]"></span>
-      </button>
-
-      <!-- الشعار -->
-      <a href="/PdfSwift/index.html" class="flex items-center gap-5 group">
-        <div class="pulse-glow">
-          <svg class="group-hover:scale-110 transition-transform duration-300"
-               width="42" height="42" viewBox="0 0 64 64">
-            <defs>
-              <linearGradient id="swiftPurple" x1="0%" y1="0%" x2="100%">
-                <stop offset="0%" stop-color="#8B5CF6"/>
-                <stop offset="100%" stop-color="#6D28D9"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#swiftPurple)" d="M42 2 L18 28 H32 L26 62 L54 30 H38 Z"
-                  style="filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));"/>
-          </svg>
-        </div>
-
-        <span class="text-3xl font-bold tracking-wide shine-text" style="color:#6D28D9;">
-          PDFSWIFT
-        </span>
-      </a>
-
-    </div>
-  </header>
-
-  <!-- مسافة للهيدر -->
-  <div class="h-28"></div>
-
-  <!-- القائمة الجانبية -->
-  <div id="sideMenu"
-       class="fixed top-0 left-0 h-full w-64 bg-white/90 backdrop-blur-xl shadow-xl transform -translate-x-full transition-transform duration-300 z-50">
-
-    <div class="p-6 flex flex-col gap-6 text-xl font-semibold text-[#4C1D95]">
-      <a href="/PdfSwift/index.html" class="hover:text-[#6D28D9] transition">الرئيسية</a>
-      <a href="/PdfSwift/about.html" class="hover:text-[#6D28D9] transition">عن الموقع</a>
-      <a href="/PdfSwift/privacy.html" class="hover:text-[#6D28D9] transition">الخصوصية</a>
-    </div>
-  </div>
-
-  <!-- بنر الصفحة -->
-  <section class="relative h-[320px] w-full bg-gradient-to-br from-purple-700 to-purple-900 flex items-center justify-center text-white">
-    <h1 class="text-4xl font-bold tracking-wide">عن PdfSwift</h1>
-  </section>
-
-  <!-- محتوى الصفحة -->
-  <section class="container mx-auto px-6 py-16 text-gray-800 leading-relaxed">
-
-    <h2 class="text-2xl font-bold mb-4">من نحن؟</h2>
-    <p class="mb-6">
-      PdfSwift هو مشروع يهدف لتقديم أدوات PDF وصور سريعة، مجانية، وآمنة تعمل بالكامل داخل المتصفح.
-      تم تصميم المنصة لتكون بسيطة، فعّالة، وتوفر للمستخدمين تجربة معالجة ملفات بدون الحاجة لرفع أي ملف إلى الإنترنت.
-    </p>
-
-    <h2 class="text-2xl font-bold mb-4">كيف يعمل PdfSwift؟</h2>
-    <p class="mb-6">
-      جميع الأدوات في PdfSwift تعمل باستخدام تقنيات WebAssembly و JavaScript داخل جهازك مباشرة.
-      هذا يعني أن ملفاتك لا تغادر جهازك إطلاقًا — لا يتم رفعها، ولا يتم تخزينها، ولا يتم إرسالها لأي خادم.
-    </p>
-
-    <h2 class="text-2xl font-bold mb-4">الخصوصية والأمان</h2>
-    <p class="mb-6">
-      نحن نؤمن بأن خصوصية المستخدم حق أساسي. لذلك تم بناء PdfSwift ليعمل بالكامل داخل المتصفح بدون أي عمليات رفع أو تخزين.
-      كل شيء يحدث محليًا على جهازك — وهذا يجعل استخدام الموقع آمنًا بنسبة 100٪.
-    </p>
-
-    <h2 class="text-2xl font-bold mb-4">مميزات PdfSwift</h2>
-    <ul class="list-disc pr-6 space-y-2">
-      <li>سريع جدًا — المعالجة تتم مباشرة على جهازك.</li>
-      <li>خصوصية كاملة — لا يتم رفع أي ملف.</li>
-      <li>يدعم الجوال — يعمل على كل الأجهزة.</li>
-      <li>يدعم العربية — واجهة عربية بالكامل.</li>
-      <li>ذكاء اصطناعي — OCR واستخراج نصوص داخل المتصفح.</li>
-      <li>مجاني بالكامل — بدون اشتراكات أو تسجيل.</li>
-    </ul>
-
-  </section>
-
-  <!-- سكربت القائمة -->
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const sideMenu = document.getElementById("sideMenu");
-
-    menuBtn.addEventListener("click", () => {
-      sideMenu.classList.toggle("-translate-x-full");
-    });
-
-    sideMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        sideMenu.classList.add("-translate-x-full");
-      });
-    });
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "عن PdfSwift",
+    "url": "https://badahai.github.io/PdfSwift/about.html",
+    "description": "تعرف على PdfSwift — منصة مجانية لمعالجة ملفات PDF والصور تعمل بالكامل داخل المتصفح بدون رفع ملفات.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PdfSwift",
+      "url": "https://badahai.github.io/PdfSwift/"
+    }
+  }
   </script>
 
-  <!-- تأثيرات الشعار -->
-  <style>
-    .pulse-glow {
-      position: relative;
-      display: inline-block;
-    }
-    .pulse-glow::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, rgba(139,92,246,0.45), rgba(109,40,217,0.15), transparent);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: pulseGlow 2.2s ease-in-out infinite;
-      filter: blur(14px);
-      z-index: -1;
-    }
-    @keyframes pulseGlow {
-      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }
-      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
-      100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }
-    }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    .shine-text {
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* البنر */
+    .banner-base {
+      background: #2e1065;
       position: relative;
       overflow: hidden;
     }
-    .shine-text::after {
-      content: "";
+
+    .banner-mid {
       position: absolute;
-      top: 0;
-      left: -120%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: shineMove 3s infinite;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 140px;
+      background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
+      background-size: 200% 200%;
+      animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(30px);
+      border-radius: 999px;
+      z-index: 0;
     }
-    @keyframes shineMove {
-      0% { left: -120%; }
-      50% { left: 140%; }
-      100% { left: -120%; }
+
+    @keyframes midMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes midGlow {
+      0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.07); }
+      100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
   </style>
+</head>
 
+<body class="bg-white text-gray-800">
+
+  <!-- الهيدر -->
+  <div id="header-placeholder"></div>
+
+  <!-- البنر -->
+  <section class="banner-base text-white py-24 text-center shadow-xl relative">
+    <div class="banner-mid"></div>
+
+    <h1 class="relative z-10 text-5xl font-bold mb-4 drop-shadow-xl">
+      عن PdfSwift
+    </h1>
+
+    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+      منصة مجانية لمعالجة ملفات PDF والصور — تعمل بالكامل داخل المتصفح بدون رفع ملفات.
+    </p>
+  </section>
+
+  <!-- المحتوى -->
+  <section class="py-20 px-6 container mx-auto">
+
+    <!-- من نحن -->
+    <div class="mb-20 text-center">
+      <h2 class="text-4xl font-bold text-purple-700 mb-6">من نحن؟</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+        PdfSwift هو مشروع يهدف لتقديم أدوات PDF وصور سريعة، مجانية، وآمنة تعمل بالكامل داخل المتصفح.
+        تم تصميم المنصة لتكون بسيطة، فعّالة، وتوفر للمستخدمين تجربة معالجة ملفات بدون الحاجة لرفع أي ملف إلى الإنترنت.
+      </p>
+    </div>
+
+    <!-- كيف يعمل الموقع -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">كيف يعمل PdfSwift؟</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        جميع الأدوات في PdfSwift تعمل باستخدام تقنيات WebAssembly و JavaScript داخل جهازك مباشرة.
+        هذا يعني أن ملفاتك لا تغادر جهازك إطلاقًا — لا يتم رفعها، ولا يتم تخزينها، ولا يتم إرسالها لأي خادم.
+      </p>
+    </div>
+
+    <!-- الخصوصية -->
+    <div class="mb-20 bg-purple-50 p-10 rounded-2xl shadow-md">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">الخصوصية والأمان</h2>
+      <p class="text-gray-700 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+        نحن نؤمن بأن خصوصية المستخدم حق أساسي.  
+        لذلك تم بناء PdfSwift ليعمل بالكامل داخل المتصفح بدون أي عمليات رفع أو تخزين.  
+        كل شيء يحدث محليًا على جهازك — وهذا يجعل استخدام الموقع آمنًا بنسبة 100٪.
+      </p>
+
+      <p class="text-center mt-4">
+        يمكنك قراءة <a href="/PdfSwift/privacy.html" class="text-purple-700 underline">سياسة الخصوصية</a> لمعرفة المزيد.
+      </p>
+    </div>
+
+    <!-- المميزات -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-10 text-center">مميزات PdfSwift</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-bolt text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">سريع جدًا</h3>
+          <p class="text-gray-600">المعالجة تتم مباشرة على جهازك بدون انتظار رفع أو تحميل.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-shield-halved text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">خصوصية كاملة</h3>
+          <p class="text-gray-600">لا يتم رفع أي ملف — كل شيء يتم محليًا داخل المتصفح.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-mobile-screen text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">يدعم الجوال</h3>
+          <p class="text-gray-600">جميع الأدوات تعمل على الهواتف والأجهزة اللوحية.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-language text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">يدعم العربية</h3>
+          <p class="text-gray-600">واجهة عربية بالكامل وتجربة استخدام سلسة.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-wand-magic-sparkles text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">ذكاء اصطناعي</h3>
+          <p class="text-gray-600">أدوات OCR واستخراج النصوص تعمل داخل المتصفح.</p>
+        </div>
+
+        <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+          <i class="fa-solid fa-gift text-purple-600 text-4xl mb-4"></i>
+          <h3 class="font-bold text-xl mb-2">مجاني بالكامل</h3>
+          <p class="text-gray-600">لا اشتراكات — لا تسجيل — لا قيود.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- رسالة من المؤسس -->
+    <div class="mb-20 text-center">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4">رسالة من المؤسس</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+        تم إنشاء PdfSwift بهدف تقديم أدوات قوية وسهلة الاستخدام للجميع،
+        بدون تعقيد وبدون المساس بخصوصية المستخدم.  
+        نؤمن أن الأدوات المفيدة يجب أن تكون متاحة للجميع — بسرعة، وبساطة، وأمان.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- الفوتر -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/layout.js"></script>
 </body>
 </html>

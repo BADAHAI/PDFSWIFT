@@ -1,94 +1,140 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>سياسة الخصوصية - PdfSwift</title>
 
-  <meta name="description" content="سياسة الخصوصية لموقع PdfSwift الذي يقدم أدوات PDF وصور تعمل بالكامل داخل المتصفح بدون رفع ملفات.">
-  <meta name="keywords" content="سياسة الخصوصية, الخصوصية, PdfSwift, حماية البيانات, عدم رفع ملفات">
+  <meta name="description" content="سياسة الخصوصية لموقع PdfSwift — جميع الأدوات تعمل داخل المتصفح بدون رفع ملفات.">
+  <meta name="keywords" content="سياسة الخصوصية, PdfSwift, خصوصية PDF, حماية البيانات">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/PdfSwift/css/global.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* نفس البنر المتوهج من صفحة عن الموقع */
+    .banner-base {
+      background: #2e1065;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-mid {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 140px;
+      background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
+      background-size: 200% 200%;
+      animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(30px);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    @keyframes midMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes midGlow {
+      0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.07); }
+      100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-white text-gray-800">
 
   <!-- الهيدر الموحد -->
   <div id="header-placeholder"></div>
 
-  <!-- ⭐ البنر المتوهّج مثل صفحة عن الموقع -->
-  <section class="relative text-center py-24 px-6 bg-gradient-to-br from-purple-700 to-purple-900 text-white overflow-hidden">
+  <!-- ⭐ البنر المتوهج (نفس تصميم صفحة عن الموقع) -->
+  <section class="banner-base text-white py-24 text-center shadow-xl relative">
+    <div class="banner-mid"></div>
 
-    <!-- توهج خلفي -->
-    <div class="absolute inset-0 opacity-30 blur-3xl bg-purple-500"></div>
+    <h1 class="relative z-10 text-5xl font-bold mb-4 drop-shadow-xl">
+      سياسة الخصوصية
+    </h1>
 
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-4">سياسة الخصوصية</h1>
-      <p class="text-lg opacity-90">
-        كيف نتعامل مع بياناتك وملفاتك داخل موقع PdfSwift لضمان أعلى مستوى من الخصوصية والأمان.
-      </p>
-    </div>
+    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+      كيف نتعامل مع بياناتك وملفاتك داخل PdfSwift لضمان أعلى مستوى من الخصوصية والأمان.
+    </p>
   </section>
 
-  <!-- ⭐ صندوق المحتوى الأبيض (نفس تصميم about.html) -->
-  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-10 mt-10 mb-20">
+  <!-- ⭐ المحتوى (نفس تصميم about.html) -->
+  <section class="py-20 px-6 container mx-auto">
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">مقدمة</h2>
-    <p class="leading-8 mb-6">
-      في <strong>PdfSwift</strong>، نضع خصوصيتك في أعلى أولوياتنا. جميع أدواتنا تعمل
-      <strong>محليًا داخل جهازك</strong> دون رفع أي ملفات إلى خوادم خارجية.
-    </p>
+    <div class="mb-20">
+      <h2 class="text-4xl font-bold text-purple-700 mb-6 text-center">مقدمة</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        في <strong>PdfSwift</strong>، نضع خصوصيتك في أعلى أولوياتنا.  
+        جميع أدواتنا تعمل محليًا داخل جهازك دون رفع أي ملف إلى الإنترنت.
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">1. عدم رفع أو تخزين الملفات</h2>
-    <p class="leading-8 mb-6">
-      جميع عمليات المعالجة (دمج، ضغط، تحويل، OCR، تعديل الصور وغيرها) تتم داخل متصفحك باستخدام تقنيات WebAssembly و JavaScript.
-      <br><br>
-      ✔ لا نقوم برفع ملفاتك  
-      ✔ لا نقوم بتخزين ملفاتك  
-      ✔ لا نحتفظ بأي نسخة من مستنداتك  
-    </p>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">1. عدم رفع أو تخزين الملفات</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        جميع عمليات المعالجة (دمج، ضغط، تحويل، OCR، تعديل الصور وغيرها) تتم داخل متصفحك باستخدام WebAssembly و JavaScript.  
+        <br><br>
+        ✔ لا نقوم برفع ملفاتك  
+        ✔ لا نقوم بتخزين ملفاتك  
+        ✔ لا نحتفظ بأي نسخة من مستنداتك  
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">2. عدم جمع بيانات شخصية</h2>
-    <p class="leading-8 mb-4">نحن لا نجمع أي معلومات شخصية مثل:</p>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">2. عدم جمع بيانات شخصية</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        نحن لا نجمع أي معلومات شخصية مثل الاسم، البريد الإلكتروني، الملفات، الصور، أو محتوى المستندات.
+      </p>
+    </div>
 
-    <ul class="list-disc pr-6 leading-8 mb-6 text-purple-700">
-      <li>الاسم</li>
-      <li>البريد الإلكتروني</li>
-      <li>الملفات أو الصور</li>
-      <li>محتوى المستندات</li>
-    </ul>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">3. ملفات تعريف الارتباط (Cookies)</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        لا يستخدم PdfSwift أي ملفات تعريف ارتباط لتتبع المستخدمين أو جمع بياناتهم.
+      </p>
+    </div>
 
-    <p class="leading-8 mb-6">
-      كما أننا لا نستخدم أي أدوات تتبع أو تحليلات تجمع بيانات حساسة.
-    </p>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">4. الأمان</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        بما أن جميع العمليات تتم داخل جهازك، فإن مستوى الأمان يعتمد على جهازك والمتصفح الذي تستخدمه.
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">3. ملفات تعريف الارتباط (Cookies)</h2>
-    <p class="leading-8 mb-6">
-      لا يستخدم PdfSwift أي ملفات تعريف ارتباط لتتبع المستخدمين أو جمع بياناتهم.
-    </p>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">5. روابط خارجية</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        قد يحتوي الموقع على روابط لمواقع خارجية. نحن غير مسؤولين عن محتوى أو سياسات تلك المواقع.
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">4. الأمان</h2>
-    <p class="leading-8 mb-6">
-      بما أن جميع العمليات تتم داخل جهازك، فإن مستوى الأمان يعتمد على جهازك والمتصفح الذي تستخدمه.
-    </p>
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">6. التعديلات على سياسة الخصوصية</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة.
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">5. روابط خارجية</h2>
-    <p class="leading-8 mb-6">
-      قد يحتوي الموقع على روابط لمواقع خارجية. نحن غير مسؤولين عن محتوى أو سياسات تلك المواقع.
-    </p>
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">7. التواصل معنا</h2>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+        إذا كان لديك أي استفسار حول سياسة الخصوصية، يمكنك التواصل معنا عبر صفحة "عن الموقع".
+      </p>
+    </div>
 
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">6. التعديلات على سياسة الخصوصية</h2>
-    <p class="leading-8 mb-6">
-      قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة.
-    </p>
-
-    <h2 class="text-2xl font-bold text-purple-800 mb-4">7. التواصل معنا</h2>
-    <p class="leading-8">
-      إذا كان لديك أي استفسار حول سياسة الخصوصية، يمكنك التواصل معنا عبر صفحة "عن الموقع".
-    </p>
-
-  </div>
+  </section>
 
   <!-- الفوتر -->
   <div id="footer-placeholder"></div>

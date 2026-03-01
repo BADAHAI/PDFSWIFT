@@ -1,16 +1,16 @@
 <!-- الهيدر العائم الموحد -->
 <div class="floating-header unified-header" id="floatingHeader">
 
-  <!-- زر الهمبرغر (يسار) -->
+  <!-- زر الهمبرغر -->
   <button id="menuBtn" class="flex flex-col gap-1.5 group absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer">
-    <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
-    <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
-    <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
+    <span class="w-7 h-1 bg-white rounded transition"></span>
+    <span class="w-7 h-1 bg-white rounded transition"></span>
+    <span class="w-7 h-1 bg-white rounded transition"></span>
   </button>
 
-  <!-- الشعار + البرق -->
+  <!-- الشعار -->
   <a href="/PdfSwift/index.html" class="flex items-center gap-3">
-    <i class="fa-solid fa-bolt text-white text-xl drop-shadow"></i>
+    <i class="fa-solid fa-bolt text-white text-xl"></i>
     <span class="text-white font-bold text-xl shine-text">PdfSwift</span>
   </a>
 
@@ -22,7 +22,6 @@
 
   <a href="/PdfSwift/index.html" class="block px-5 py-2 text-purple-800 hover:bg-purple-100">الرئيسية</a>
 
-  <!-- الأدوات -->
   <details class="px-5 py-2 cursor-pointer">
     <summary class="text-purple-800 font-semibold hover:text-purple-600">الأدوات</summary>
     <div class="mt-2 pl-3 flex flex-col gap-2 text-purple-700">
@@ -38,71 +37,4 @@
 </div>
 
 <!-- خلفية تغلق القائمة -->
-<div id="menuOverlay"
-     class="hidden fixed inset-0 z-40"></div>
-
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-  const menuOverlay = document.getElementById("menuOverlay");
-
-  // فتح القائمة
-  menuBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("hidden");
-    menuOverlay.classList.toggle("hidden");
-  });
-
-  // إغلاق عند الضغط خارج القائمة
-  menuOverlay.addEventListener("click", () => {
-    dropdownMenu.classList.add("hidden");
-    menuOverlay.classList.add("hidden");
-  });
-</script>
-
-<style>
-  /* نفس ستايل الصفحة الرئيسية */
-  .floating-header {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 360px;
-    padding: 12px 24px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    color: white;
-    z-index: 50;
-    transition: opacity 0.4s ease;
-  }
-
-  /* رفع الهيدر في الصفحات الداخلية */
-  body:not(.home-page) .unified-header {
-    top: 20px !important;
-  }
-
-  /* تأثير اللمعة للشعار */
-  .shine-text {
-    position: relative;
-    overflow: hidden;
-  }
-  .shine-text::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
-    animation: shineMove 3s infinite;
-  }
-  @keyframes shineMove {
-    0% { left: -120%; }
-    50% { left: 140%; }
-    100% { left: -120%; }
-  }
-</style>
+<div id="menuOverlay" class="hidden fixed inset-0 z-40"></div>

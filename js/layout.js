@@ -9,22 +9,9 @@ async function loadPartial(id, file) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const path = window.location.pathname;
+  // تحميل الهيدر الموحد في كل الصفحات
+  loadPartial("header-placeholder", "/PdfSwift/partials/header.html");
 
-  // تحميل الفوتر في كل الصفحات
+  // تحميل الفوتر
   loadPartial("footer-placeholder", "/PdfSwift/partials/footer.html");
-
-  // إذا كانت الصفحة الرئيسية → حمّل الهيدر الخاص بها
-  if (
-    path.endsWith("index.html") ||
-    path === "/PdfSwift/" ||
-    path === "/PdfSwift"
-  ) {
-    loadPartial("home-header-placeholder", "/PdfSwift/partials/home-header.html");
-  }
-
-  // غير ذلك → حمّل الهيدر الموحد
-  else {
-    loadPartial("header-placeholder", "/PdfSwift/partials/header.html");
-  }
 });

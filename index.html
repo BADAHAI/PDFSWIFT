@@ -7,7 +7,7 @@
   <title>PdfSwift - أدوات PDF وصور تعمل داخل المتصفح بدون رفع ملفات</title>
 
   <meta name="description" content="PdfSwift يقدم أدوات PDF وصور مجانية تعمل بالكامل داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، OCR والمزيد — خصوصية كاملة وسرعة عالية.">
-  <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, ضغط PDF, OCR, صور, تحويل PDF, بدون رفع ملفات, PdfSwift">
+  <meta name="keywords" content="PDF, أدوات PDF، دمج PDF، ضغط PDF، OCR، صور، تحويل PDF، بدون رفع ملفات، PdfSwift">
 
   <!-- مكتبة الأيقونات -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -51,7 +51,7 @@
       position: relative;
       overflow: hidden;
       padding-top: 180px;
-      padding-bottom: 120px;
+      padding-bottom: 160px;
       color: white;
     }
 
@@ -61,22 +61,26 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* توهج متحرك */
-    .glow {
+    /* خطوط موجية */
+    .wave-lines {
       position: absolute;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
-      filter: blur(100px);
-      animation: float 6s ease-in-out infinite alternate;
+      width: 140%;
+      height: 140%;
+      top: -20%;
+      left: -20%;
+      background: url('https://i.imgur.com/6YVQF0P.png');
+      opacity: 0.18;
+      animation: waveMove 12s linear infinite;
+      filter: blur(2px);
     }
 
-    @keyframes float {
-      0% { transform: translate(-60px, -60px); }
-      100% { transform: translate(60px, 60px); }
+    @keyframes waveMove {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(40px) translateY(20px); }
+      100% { transform: translateX(0) translateY(0); }
     }
 
-    /* كروت المميزات العائمة */
+    /* كروت المميزات */
     .feature-card {
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(14px);
@@ -90,15 +94,16 @@
       transform: translateY(-6px);
     }
 
-    /* زر نابض */
+    /* زر نابض قوي */
     .pulse {
-      animation: pulseAnim 1.8s infinite;
+      animation: pulseAnim 1.4s infinite;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
     }
 
     @keyframes pulseAnim {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+      50% { transform: scale(1.15); box-shadow: 0 0 35px rgba(255,255,255,0.7); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
     }
   </style>
 </head>
@@ -112,12 +117,33 @@
     <a href="/PdfSwift/about.html" class="text-white hover:text-purple-200 transition">عن الموقع</a>
   </div>
 
-  <!-- البنر + المميزات داخله -->
+  <!-- البنر -->
   <section class="hero">
-    <div class="glow"></div>
+    <div class="wave-lines"></div>
 
-    <!-- المميزات داخل البنر -->
-    <div class="relative z-10 container mx-auto px-6 mb-20">
+    <!-- التعريف بالموقع -->
+    <div class="relative z-10 px-6 text-center mb-20">
+      <h1 class="text-5xl font-bold mb-6 drop-shadow-xl">
+        أدوات PDF وصور تعمل داخل المتصفح
+      </h1>
+
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed mb-10">
+        جميع الأدوات تعمل محليًا على جهازك — بدون رفع ملفات، بدون انتظار، وبدون أي مخاطر على الخصوصية.
+      </p>
+
+      <a href="/PdfSwift/tools.html"
+         class="bg-white text-purple-700 font-bold text-xl px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition pulse">
+        جرّب الأدوات الآن
+      </a>
+    </div>
+
+    <!-- عنوان المميزات -->
+    <h2 class="relative z-10 text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">
+      لماذا PDF SWIFT هو الخيار الأفضل؟
+    </h2>
+
+    <!-- المميزات -->
+    <div class="relative z-10 container mx-auto px-6">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
 
         <div class="feature-card p-8 rounded-2xl text-center">
@@ -145,22 +171,6 @@
         </div>
 
       </div>
-    </div>
-
-    <!-- نص البنر -->
-    <div class="relative z-10 px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6 drop-shadow-xl">
-        أدوات PDF وصور تعمل داخل المتصفح
-      </h1>
-
-      <p class="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed mb-10">
-        جميع الأدوات تعمل محليًا على جهازك — بدون رفع ملفات، بدون انتظار، وبدون أي مخاطر على الخصوصية.
-      </p>
-
-      <a href="/PdfSwift/tools.html"
-         class="bg-white text-purple-700 font-bold text-xl px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition pulse">
-        جرّب الأدوات الآن
-      </a>
     </div>
   </section>
 

@@ -1,3 +1,4 @@
+// تحميل أجزاء الصفحة (الهيدر + الفوتر)
 async function loadPartial(id, file) {
   try {
     const res = await fetch(file);
@@ -9,77 +10,32 @@ async function loadPartial(id, file) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // تحميل الهيدر الموحد في كل الصفحات
+  // تحميل الهيدر الموحد
   loadPartial("header-placeholder", "/PdfSwift/partials/header.html");
 
   // تحميل الفوتر
   loadPartial("footer-placeholder", "/PdfSwift/partials/footer.html");
-});
-document.addEventListener("DOMContentLoaded", () => {
 
-  // ننتظر تحميل الهيدر بالكامل
+  // بعد تحميل الهيدر، نشغل القائمة المنسدلة
   setTimeout(() => {
     const menuBtn = document.getElementById("menuBtn");
-    const sideMenu = document.getElementById("sideMenu");
+    const dropdownMenu = document.getElementById("dropdownMenu");
     const menuOverlay = document.getElementById("menuOverlay");
 
-    if (!menuBtn || !sideMenu || !menuOverlay) return;
+    // لو الهيدر ما تحمل لسه، نوقف
+    if (!menuBtn || !dropdownMenu || !menuOverlay) return;
 
-    function openMenu() {
-      sideMenu.classList.remove("-translate-x-full");
-      menuOverlay.classList.remove("hidden");
-    }
-
-    function closeMenu() {
-      sideMenu.classList.add("-translate-x-full");
-      menuOverlay.classList.add("hidden");
-    }
-
-    menuBtn.addEventListener("click", openMenu);
-    menuOverlay.addEventListener("click", closeMenu);
-
-    sideMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", closeMenu);
+    // فتح القائمة
+    menuBtn.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("hidden");
+      menuOverlay.classList.toggle("hidden");
     });
 
-  }, 200); // ننتظر 200ms حتى يتم تحميل الهيدر
+    // إغلاق عند الضغط خارجها
+    menuOverlay.addEventListener("click", () => {
+      dropdownMenu.classList.add("hidden");
+      menuOverlay.classList.add("hidden");
+    });
+
+  }, 300); // ننتظر تحميل الهيدر
 });
-// تشغيل القائمة المنسدلة بعد تحميل الهيدر
-setTimeout(() => {
-  const menuBtn = document.getElementById("menuBtn");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-  const menuOverlay = document.getElementById("menuOverlay");
-
-  if (!menuBtn || !dropdownMenu || !menuOverlay) return;
-
-  // فتح القائمة
-  menuBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("hidden");
-    menuOverlay.classList.toggle("hidden");
-  });
-
-  // إغلاق عند الضغط خارجها
-  menuOverlay.addEventListener("click", () => {
-    dropdownMenu.classList.add("hidden");
-    menuOverlay.classList.add("hidden");
-  });
-
-}, 200);
-setTimeout(() => {
-  const menuBtn = document.getElementById("menuBtn");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-  const menuOverlay = document.getElementById("menuOverlay");
-
-  if (!menuBtn || !dropdownMenu || !menuOverlay) return;
-
-  menuBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("hidden");
-    menuOverlay.classList.toggle("hidden");
-  });
-
-  menuOverlay.addEventListener("click", () => {
-    dropdownMenu.classList.add("hidden");
-    menuOverlay.classList.add("hidden");
-  });
-
-}, 200);

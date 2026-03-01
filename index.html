@@ -4,41 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>PdfSwift - أدوات PDF وصور مجانية عبر المتصفح بدون رفع ملفات</title>
+  <title>PdfSwift - أدوات PDF وصور تعمل داخل المتصفح بدون رفع ملفات</title>
 
-  <meta name="description" content="PdfSwift يقدم أدوات مجانية لمعالجة ملفات PDF والصور مباشرة داخل المتصفح بدون رفع ملفات. سرعة عالية، خصوصية كاملة، وسهولة استخدام.">
-  <meta name="keywords" content="PDF, دمج PDF, تقسيم PDF, ضغط PDF, تحويل PDF, أدوات PDF, أدوات صور, ضغط الصور, تغيير حجم الصور, PdfSwift">
-  <meta name="author" content="PdfSwift">
+  <meta name="description" content="PdfSwift يقدم أدوات PDF وصور مجانية تعمل بالكامل داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، OCR والمزيد — خصوصية كاملة وسرعة عالية.">
+  <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, ضغط PDF, OCR, صور, تحويل PDF, بدون رفع ملفات, PdfSwift">
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* البنر البنفسجي */
+    /* البنر */
     .banner-base {
       background: #2e1065;
       position: relative;
       overflow: hidden;
     }
 
-    /* الجزء المتحرك في منتصف البنر */
     .banner-mid {
       position: absolute;
-      top: 35%;
+      top: 40%;
       left: 50%;
       transform: translateX(-50%);
-      width: 80%;
-      height: 160px;
+      width: 70%;
+      height: 140px;
       background: radial-gradient(circle at 50% 50%, #a855f7, #6d28d9, #4c1d95);
       background-size: 200% 200%;
       animation: midMove 6s ease-in-out infinite, midGlow 3s ease-in-out infinite;
       opacity: 0.7;
-      filter: blur(35px);
+      filter: blur(30px);
       border-radius: 999px;
       z-index: 0;
     }
@@ -51,22 +45,19 @@
 
     @keyframes midGlow {
       0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.9; transform: translateX(-50%) scale(1.08); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.07); }
       100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
     }
 
-    /* كروت زجاجية */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: 0.35s ease;
-      box-shadow: 0 8px 25px rgba(109, 40, 217, 0.15);
+    /* زر نابض */
+    .pulse {
+      animation: pulseAnim 1.8s infinite;
     }
-    .glass-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 40px rgba(109, 40, 217, 0.35);
-      background: rgba(255, 255, 255, 0.28);
+
+    @keyframes pulseAnim {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
@@ -78,60 +69,63 @@
 
   <!-- البنر -->
   <section class="banner-base text-white py-32 text-center shadow-xl relative">
-
     <div class="banner-mid"></div>
 
-    <h1 class="relative z-10 text-5xl font-medium mb-6 drop-shadow-xl">
-      أدوات PDF وصور، بسيطة وسريعة
+    <h1 class="relative z-10 text-5xl font-bold mb-6 drop-shadow-xl">
+      أدوات PDF وصور تعمل داخل المتصفح
     </h1>
 
-    <p class="relative z-10 text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
-      PdfSwift يوفر مجموعة أدوات مجانية تعمل بالكامل داخل المتصفح  
-      بدون أي اتصال خارجي — خصوصية كاملة وسرعة عالية.
+    <p class="relative z-10 text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed mb-10">
+      جميع الأدوات تعمل محليًا على جهازك — بدون رفع ملفات، بدون انتظار، وبدون أي مخاطر على الخصوصية.
     </p>
 
     <a href="/PdfSwift/tools.html"
-       class="relative z-10 mt-10 inline-block bg-white text-purple-700 px-10 py-4 rounded-2xl text-xl font-medium shadow-xl hover:bg-purple-100 transition">
-      جرّب الأدوات مجاناً الآن
+       class="relative z-10 bg-white text-purple-700 font-bold text-xl px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition pulse">
+      جرّب الأدوات الآن
     </a>
   </section>
 
-  <!-- المزايا -->
-  <section id="about" class="py-24">
-    <div class="container mx-auto px-6">
+  <!-- المميزات -->
+  <section class="py-24 px-6 container mx-auto">
+    <h2 class="text-4xl font-bold text-center text-purple-700 mb-12">
+      لماذا PdfSwift؟
+    </h2>
 
-      <h2 class="text-4xl font-medium text-center mb-16 text-purple-700">
-        لماذا PdfSwift؟
-      </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-
-        <div class="glass-card p-12 rounded-2xl text-center">
-          <i class="fa-solid fa-bolt text-6xl text-purple-600 mb-6"></i>
-          <h3 class="text-2xl font-medium mb-3 text-purple-700">سرعة خارقة</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">
-            جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات، مما يجعلها أسرع من الخدمات التقليدية.
-          </p>
-        </div>
-
-        <div class="glass-card p-12 rounded-2xl text-center">
-          <i class="fa-solid fa-shield-halved text-6xl text-purple-600 mb-6"></i>
-          <h3 class="text-2xl font-medium mb-3 text-purple-700">خصوصية كاملة</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">
-            ملفاتك لا تغادر جهازك إطلاقاً — كل المعالجة تتم محلياً داخل المتصفح.
-          </p>
-        </div>
-
-        <div class="glass-card p-12 rounded-2xl text-center">
-          <i class="fa-solid fa-wand-magic-sparkles text-6xl text-purple-600 mb-6"></i>
-          <h3 class="text-2xl font-medium mb-3 text-purple-700">سهولة الاستخدام</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">
-            واجهة بسيطة وواضحة، مصممة لتساعدك على إنجاز مهامك بسرعة وبدون تعقيد.
-          </p>
-        </div>
-
+      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
+        <i class="fa-solid fa-bolt text-purple-600 text-5xl mb-4"></i>
+        <h3 class="font-bold text-2xl mb-2">سرعة خارقة</h3>
+        <p class="text-gray-600 leading-relaxed">
+          جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات — مما يجعلها أسرع من الخدمات التقليدية.
+        </p>
       </div>
+
+      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
+        <i class="fa-solid fa-shield-halved text-purple-600 text-5xl mb-4"></i>
+        <h3 class="font-bold text-2xl mb-2">خصوصية كاملة</h3>
+        <p class="text-gray-600 leading-relaxed">
+          ملفاتك لا تغادر جهازك إطلاقًا — كل المعالجة تتم محليًا داخل المتصفح.
+        </p>
+      </div>
+
+      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
+        <i class="fa-solid fa-gift text-purple-600 text-5xl mb-4"></i>
+        <h3 class="font-bold text-2xl mb-2">مجاني بالكامل</h3>
+        <p class="text-gray-600 leading-relaxed">
+          لا اشتراكات — لا تسجيل — لا قيود. جميع الأدوات متاحة للجميع مجانًا.
+        </p>
+      </div>
+
     </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 text-center">
+    <a href="/PdfSwift/tools.html"
+       class="bg-purple-700 text-white font-bold text-xl px-12 py-4 rounded-full shadow-lg hover:bg-purple-800 transition pulse">
+      ابدأ استخدام الأدوات الآن
+    </a>
   </section>
 
   <!-- الفوتر -->

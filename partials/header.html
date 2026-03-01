@@ -1,26 +1,32 @@
-<header class="w-full py-4 bg-white/40 backdrop-blur-xl shadow-md border-b border-white/30 transition fixed top-0 left-0 z-50">
+<header id="smartHeader" class="w-full py-4 bg-white/40 backdrop-blur-xl shadow-md border-b border-white/30 transition-all duration-300 fixed top-0 left-0 z-50">
   <div class="container mx-auto px-6 flex justify-between items-center relative">
 
-    <!-- زر الرجوع للصفحة الرئيسية -->
+    <!-- زر الرجوع -->
     <a href="/PdfSwift/index.html" class="text-[#6D28D9] text-2xl hover:text-[#4C1D95] transition">
       <i class="fa-solid fa-arrow-right"></i>
     </a>
 
     <!-- الشعار في المنتصف -->
-    <a href="/PdfSwift/index.html" class="flex items-center gap-3 absolute left-1/2 transform -translate-x-1/2">
-      <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="swiftPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8B5CF6"/>
-            <stop offset="100%" stop-color="#6D28D9"/>
-          </linearGradient>
-        </defs>
+    <a href="/PdfSwift/index.html" class="flex items-center gap-3 absolute left-1/2 transform -translate-x-1/2 group">
 
-        <path fill="url(#swiftPurple)" d="M42 2 L18 28 H32 L26 62 L54 30 H38 Z"
-              style="filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));" />
-      </svg>
+      <!-- أيقونة البرق مع Pulse Glow واضح -->
+      <div class="pulse-glow">
+        <svg class="group-hover:scale-110 transition-transform duration-300"
+             width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="swiftPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B5CF6"/>
+              <stop offset="100%" stop-color="#6D28D9"/>
+            </linearGradient>
+          </defs>
 
-      <span class="text-3xl font-medium tracking-tight" style="color:#6D28D9;">
+          <path fill="url(#swiftPurple)" d="M42 2 L18 28 H32 L26 62 L54 30 H38 Z"
+                style="filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));" />
+        </svg>
+      </div>
+
+      <!-- نص الشعار -->
+      <span class="text-3xl font-medium tracking-tight shine-text" style="color:#6D28D9;">
         PdfSwift
       </span>
     </a>
@@ -33,3 +39,72 @@
 
 <!-- مسافة علشان الهيدر الثابت ما يغطي المحتوى -->
 <div class="h-20"></div>
+
+<!-- حركات CSS -->
+<style>
+  /* نبض واضح + توهج حول البرق */
+  .pulse-glow {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pulse-glow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle, rgba(139,92,246,0.45), rgba(109,40,217,0.15), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseGlow 2.2s ease-in-out infinite;
+    filter: blur(12px);
+    z-index: -1;
+  }
+
+  @keyframes pulseGlow {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }
+    50% { transform: translate(-50%, -50%) scale(1.25); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }
+  }
+
+  /* لمعة نص الشعار */
+  .shine-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+    animation: shineMove 3s infinite;
+  }
+  @keyframes shineMove {
+    0% { left: -120%; }
+    50% { left: 140%; }
+    100% { left: -120%; }
+  }
+</style>
+
+<!-- سكربت الهيدر الذكي -->
+<script>
+  let lastScroll = 0;
+  const header = document.getElementById("smartHeader");
+
+  window.addEventListener("scroll", () => {
+    const current = window.pageYOffset;
+
+    if (current > lastScroll && current > 80) {
+      header.style.transform = "translateY(-100%)";
+    } else {
+      header.style.transform = "translateY(0)";
+    }
+
+    lastScroll = current;
+  });
+</script>

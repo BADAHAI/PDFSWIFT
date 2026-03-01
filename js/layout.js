@@ -65,3 +65,21 @@ setTimeout(() => {
   });
 
 }, 200);
+setTimeout(() => {
+  const menuBtn = document.getElementById("menuBtn");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  if (!menuBtn || !dropdownMenu || !menuOverlay) return;
+
+  menuBtn.addEventListener("click", () => {
+    dropdownMenu.classList.toggle("hidden");
+    menuOverlay.classList.toggle("hidden");
+  });
+
+  menuOverlay.addEventListener("click", () => {
+    dropdownMenu.classList.add("hidden");
+    menuOverlay.classList.add("hidden");
+  });
+
+}, 200);

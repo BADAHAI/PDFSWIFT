@@ -6,16 +6,45 @@
 
   <title>سياسة الخصوصية - PdfSwift</title>
 
-  <meta name="description" content="سياسة الخصوصية لموقع PdfSwift — جميع الأدوات تعمل داخل المتصفح بدون رفع ملفات.">
-  <meta name="keywords" content="سياسة الخصوصية, PdfSwift, خصوصية PDF, حماية البيانات">
+  <!-- تحسين محركات البحث SEO -->
+  <meta name="description" content="سياسة الخصوصية لموقع PdfSwift — جميع الأدوات تعمل داخل المتصفح بدون رفع ملفات لضمان أعلى مستوى من الأمان والخصوصية.">
+  <meta name="keywords" content="سياسة الخصوصية, PdfSwift, خصوصية PDF, حماية البيانات, بدون رفع ملفات, أمان PDF">
 
+  <!-- OG Tags -->
+  <meta property="og:title" content="سياسة الخصوصية - PdfSwift">
+  <meta property="og:description" content="تعرف على كيفية حماية بياناتك وملفاتك داخل PdfSwift — جميع الأدوات تعمل محليًا داخل جهازك.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://badahai.github.io/PdfSwift/privacy.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="سياسة الخصوصية - PdfSwift">
+  <meta name="twitter:description" content="جميع أدوات PdfSwift تعمل داخل جهازك بدون رفع ملفات — خصوصية كاملة.">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "سياسة الخصوصية",
+    "url": "https://badahai.github.io/PdfSwift/privacy.html",
+    "description": "سياسة الخصوصية لموقع PdfSwift — جميع الأدوات تعمل داخل المتصفح بدون رفع ملفات.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PdfSwift",
+      "url": "https://badahai.github.io/PdfSwift/"
+    }
+  }
+  </script>
+
+  <!-- Tailwind + Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* نفس البنر المتوهج من صفحة عن الموقع */
+    /* البنر المتوهج */
     .banner-base {
       background: #2e1065;
       position: relative;
@@ -57,7 +86,7 @@
   <!-- الهيدر الموحد -->
   <div id="header-placeholder"></div>
 
-  <!-- ⭐ البنر المتوهج (نفس تصميم صفحة عن الموقع) -->
+  <!-- البنر -->
   <section class="banner-base text-white py-24 text-center shadow-xl relative">
     <div class="banner-mid"></div>
 
@@ -70,68 +99,81 @@
     </p>
   </section>
 
-  <!-- ⭐ المحتوى (نفس تصميم about.html) -->
+  <!-- المحتوى -->
   <section class="py-20 px-6 container mx-auto">
 
-    <div class="mb-20">
-      <h2 class="text-4xl font-bold text-purple-700 mb-6 text-center">مقدمة</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        في <strong>PdfSwift</strong>، نضع خصوصيتك في أعلى أولوياتنا.  
-        جميع أدواتنا تعمل محليًا داخل جهازك دون رفع أي ملف إلى الإنترنت.
-      </p>
+    <!-- كروت النقاط السبعة -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-file-shield text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">عدم رفع أو تخزين الملفات</h3>
+        <p class="text-gray-600 leading-relaxed">
+          جميع عمليات المعالجة تتم داخل جهازك باستخدام WebAssembly و JavaScript بدون رفع أي ملف.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-user-shield text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">عدم جمع بيانات شخصية</h3>
+        <p class="text-gray-600 leading-relaxed">
+          لا نجمع أي معلومات مثل الاسم أو البريد الإلكتروني أو الملفات أو الصور.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-cookie-bite text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">عدم استخدام الكوكيز</h3>
+        <p class="text-gray-600 leading-relaxed">
+          لا نستخدم أي ملفات تعريف ارتباط لتتبع المستخدمين أو جمع بياناتهم.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-lock text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">الأمان</h3>
+        <p class="text-gray-600 leading-relaxed">
+          بما أن كل شيء يتم داخل جهازك، فإن مستوى الأمان يعتمد على جهازك والمتصفح.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-link text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">روابط خارجية</h3>
+        <p class="text-gray-600 leading-relaxed">
+          قد يحتوي الموقع على روابط خارجية ولسنا مسؤولين عن محتواها أو سياساتها.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-rotate text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">تحديثات السياسة</h3>
+        <p class="text-gray-600 leading-relaxed">
+          قد نقوم بتحديث سياسة الخصوصية من وقت لآخر وسيتم نشر التغييرات هنا.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white shadow-lg rounded-xl text-center">
+        <i class="fa-solid fa-circle-info text-purple-600 text-4xl mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">معلومات إضافية</h3>
+        <p class="text-gray-600 leading-relaxed">
+          جميع الأدوات تعمل محليًا داخل جهازك لضمان أعلى مستوى من الخصوصية.
+        </p>
+      </div>
+
     </div>
 
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">1. عدم رفع أو تخزين الملفات</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        جميع عمليات المعالجة (دمج، ضغط، تحويل، OCR، تعديل الصور وغيرها) تتم داخل متصفحك باستخدام WebAssembly و JavaScript.  
-        <br><br>
-        ✔ لا نقوم برفع ملفاتك  
-        ✔ لا نقوم بتخزين ملفاتك  
-        ✔ لا نحتفظ بأي نسخة من مستنداتك  
+    <!-- كرت التواصل -->
+    <div class="p-8 bg-purple-50 shadow-lg rounded-2xl text-center max-w-2xl mx-auto">
+      <i class="fa-brands fa-x-twitter text-purple-700 text-5xl mb-4"></i>
+      <h3 class="text-2xl font-bold text-purple-800 mb-2">التواصل معنا</h3>
+      <p class="text-gray-700 text-lg leading-relaxed mb-4">
+        يمكنك التواصل معنا عبر صفحة المطور — حسابي في منصة X.
       </p>
-    </div>
-
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">2. عدم جمع بيانات شخصية</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        نحن لا نجمع أي معلومات شخصية مثل الاسم، البريد الإلكتروني، الملفات، الصور، أو محتوى المستندات.
-      </p>
-    </div>
-
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">3. ملفات تعريف الارتباط (Cookies)</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        لا يستخدم PdfSwift أي ملفات تعريف ارتباط لتتبع المستخدمين أو جمع بياناتهم.
-      </p>
-    </div>
-
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">4. الأمان</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        بما أن جميع العمليات تتم داخل جهازك، فإن مستوى الأمان يعتمد على جهازك والمتصفح الذي تستخدمه.
-      </p>
-    </div>
-
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">5. روابط خارجية</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        قد يحتوي الموقع على روابط لمواقع خارجية. نحن غير مسؤولين عن محتوى أو سياسات تلك المواقع.
-      </p>
-    </div>
-
-    <div class="mb-20">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">6. التعديلات على سياسة الخصوصية</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة.
-      </p>
-    </div>
-
-    <div class="mb-10">
-      <h2 class="text-3xl font-bold text-purple-700 mb-4 text-center">7. التواصل معنا</h2>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto text-center">
-        إذا كان لديك أي استفسار حول سياسة الخصوصية، يمكنك التواصل معنا عبر صفحة "عن الموقع".
-      </p>
+      <a href="https://x.com/BADAH_AI"
+         class="text-purple-700 underline font-semibold text-lg">
+         زيارة حساب المطور
+      </a>
     </div>
 
   </section>

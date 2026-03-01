@@ -107,3 +107,19 @@
     100% { left: -120%; }
   }
 </style>
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sideMenu = document.getElementById("sideMenu");
+
+  // فتح وإغلاق القائمة عند الضغط على زر الهمبرغر
+  menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("-translate-x-full");
+  });
+
+  // إغلاق القائمة عند الضغط على أي رابط داخلها
+  sideMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      sideMenu.classList.add("-translate-x-full");
+    });
+  });
+</script>

@@ -2,7 +2,7 @@
 <div class="floating-header unified-header" id="floatingHeader">
 
   <!-- زر الهمبرغر (يسار) -->
-  <button id="menuBtn" class="flex flex-col gap-1.5 group absolute left-4 top-1/2 -translate-y-1/2">
+  <button id="menuBtn" class="flex flex-col gap-1.5 group absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer">
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
     <span class="w-7 h-1 bg-white rounded transition group-hover:bg-purple-200"></span>
@@ -16,9 +16,13 @@
 
 </div>
 
+<!-- خلفية تغلق القائمة عند الضغط -->
+<div id="menuOverlay"
+     class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-40"></div>
+
 <!-- القائمة الجانبية -->
 <div id="sideMenu"
-     class="fixed top-0 left-0 h-full w-64 bg-white/95 backdrop-blur-xl shadow-xl transform -translate-x-full transition-transform duration-300 z-50">
+     class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 z-50 rounded-r-2xl">
 
   <div class="p-6 flex flex-col gap-6 text-xl font-semibold text-purple-800">
 
@@ -32,17 +36,27 @@
 <script>
   const menuBtn = document.getElementById("menuBtn");
   const sideMenu = document.getElementById("sideMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
 
-  // فتح وإغلاق القائمة
-  menuBtn.addEventListener("click", () => {
-    sideMenu.classList.toggle("-translate-x-full");
-  });
+  function openMenu() {
+    sideMenu.classList.remove("-translate-x-full");
+    menuOverlay.classList.remove("hidden");
+  }
 
-  // إغلاق القائمة عند الضغط على أي رابط
+  function closeMenu() {
+    sideMenu.classList.add("-translate-x-full");
+    menuOverlay.classList.add("hidden");
+  }
+
+  // فتح القائمة
+  menuBtn.addEventListener("click", openMenu);
+
+  // إغلاق عند الضغط على الخلفية
+  menuOverlay.addEventListener("click", closeMenu);
+
+  // إغلاق عند الضغط على أي رابط
   sideMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      sideMenu.classList.add("-translate-x-full");
-    });
+    link.addEventListener("click", closeMenu);
   });
 </script>
 
@@ -67,7 +81,7 @@
     transition: opacity 0.4s ease;
   }
 
-  /* رفع الهيدر في الصفحات الداخلية فقط */
+  /* رفع الهيدر في الصفحات الداخلية */
   body:not(.home-page) .unified-header {
     top: 20px !important;
   }

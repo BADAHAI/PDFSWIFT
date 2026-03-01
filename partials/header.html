@@ -16,28 +16,31 @@
 
 </div>
 
-<!-- القائمة المنسدلة -->
-<div id="dropdownMenu"
-     class="hidden absolute left-4 top-[90px] bg-white shadow-xl rounded-xl py-4 w-56 z-50">
+<!-- القائمة الجانبية بخلفية شفافة -->
+<div id="sideMenu"
+     class="fixed top-0 left-0 h-full w-64 bg-white/80 backdrop-blur-xl shadow-xl transform -translate-x-full transition-transform duration-300 z-50">
 
-  <a href="/PdfSwift/index.html" class="block px-5 py-2 text-purple-800 hover:bg-purple-100">الرئيسية</a>
+  <div class="p-6 flex flex-col gap-6 text-xl font-semibold text-purple-800">
 
-  <details class="px-5 py-2 cursor-pointer">
-    <summary class="text-purple-800 font-semibold hover:text-purple-600">الأدوات</summary>
-    <div class="mt-2 pl-3 flex flex-col gap-2 text-purple-700">
-      <a href="/PdfSwift/tools.html#pdf" class="hover:text-purple-500">أدوات PDF</a>
-      <a href="/PdfSwift/tools.html#img" class="hover:text-purple-500">أدوات الصور</a>
-      <a href="/PdfSwift/tools.html#ai" class="hover:text-purple-500">أدوات الذكاء الاصطناعي</a>
-    </div>
-  </details>
+    <a href="/PdfSwift/index.html" class="hover:text-purple-600 transition">الرئيسية</a>
 
-  <a href="/PdfSwift/about.html" class="block px-5 py-2 text-purple-800 hover:bg-purple-100">عن الموقع</a>
-  <a href="/PdfSwift/privacy.html" class="block px-5 py-2 text-purple-800 hover:bg-purple-100">الخصوصية</a>
+    <details>
+      <summary class="cursor-pointer hover:text-purple-600">الأدوات</summary>
+      <div class="mt-2 pl-3 flex flex-col gap-2 text-purple-700">
+        <a href="/PdfSwift/tools.html#pdf" class="hover:text-purple-500">أدوات PDF</a>
+        <a href="/PdfSwift/tools.html#img" class="hover:text-purple-500">أدوات الصور</a>
+        <a href="/PdfSwift/tools.html#ai" class="hover:text-purple-500">أدوات الذكاء الاصطناعي</a>
+      </div>
+    </details>
 
+    <a href="/PdfSwift/about.html" class="hover:text-purple-600 transition">عن الموقع</a>
+    <a href="/PdfSwift/privacy.html" class="hover:text-purple-600 transition">الخصوصية</a>
+
+  </div>
 </div>
 
 <!-- خلفية تغلق القائمة -->
-<div id="menuOverlay" class="hidden fixed inset-0 z-40"></div>
+<div id="menuOverlay" class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40"></div>
 
 <style>
   .floating-header {

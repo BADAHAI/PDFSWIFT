@@ -10,32 +10,29 @@ async function loadPartial(id, file) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // تحميل الهيدر الموحد
+  // تحميل الهيدر والفوتر
   loadPartial("header-placeholder", "/PdfSwift/partials/header.html");
-
-  // تحميل الفوتر
   loadPartial("footer-placeholder", "/PdfSwift/partials/footer.html");
 
-  // بعد تحميل الهيدر، نشغل القائمة المنسدلة
+  // تشغيل القائمة بعد تحميل الهيدر
   setTimeout(() => {
     const menuBtn = document.getElementById("menuBtn");
-    const dropdownMenu = document.getElementById("dropdownMenu");
+    const sideMenu = document.getElementById("sideMenu");
     const menuOverlay = document.getElementById("menuOverlay");
 
-    // لو الهيدر ما تحمل لسه، نوقف
-    if (!menuBtn || !dropdownMenu || !menuOverlay) return;
+    if (!menuBtn || !sideMenu || !menuOverlay) return;
 
     // فتح القائمة
     menuBtn.addEventListener("click", () => {
-      dropdownMenu.classList.toggle("hidden");
+      sideMenu.classList.toggle("-translate-x-full");
       menuOverlay.classList.toggle("hidden");
     });
 
     // إغلاق عند الضغط خارجها
     menuOverlay.addEventListener("click", () => {
-      dropdownMenu.classList.add("hidden");
+      sideMenu.classList.add("-translate-x-full");
       menuOverlay.classList.add("hidden");
     });
 
-  }, 300); // ننتظر تحميل الهيدر
+  }, 300);
 });

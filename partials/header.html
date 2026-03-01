@@ -38,3 +38,48 @@
 
 <!-- خلفية تغلق القائمة -->
 <div id="menuOverlay" class="hidden fixed inset-0 z-40"></div>
+
+<style>
+  .floating-header {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    z-index: 50;
+  }
+
+  body:not(.home-page) .unified-header {
+    top: 20px !important;
+  }
+
+  /* لمعان الشعار */
+  .shine-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+    animation: shineMove 3s infinite;
+  }
+  @keyframes shineMove {
+    0% { left: -120%; }
+    50% { left: 140%; }
+    100% { left: -120%; }
+  }
+</style>

@@ -9,12 +9,15 @@
   <meta name="description" content="PdfSwift يقدم أدوات PDF وصور مجانية تعمل بالكامل داخل المتصفح بدون رفع ملفات. دمج، تقسيم، ضغط، تحويل، OCR والمزيد — خصوصية كاملة وسرعة عالية.">
   <meta name="keywords" content="PDF, أدوات PDF, دمج PDF, ضغط PDF, OCR, صور, تحويل PDF, بدون رفع ملفات, PdfSwift">
 
+  <!-- مكتبة الأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    /* الهيدر العائم الخاص بالصفحة الرئيسية */
+    /* الهيدر العائم */
     .floating-header {
       position: absolute;
       top: 40px;
@@ -23,18 +26,17 @@
       width: 360px;
       padding: 12px 24px;
       border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
       color: white;
-      z-index: 20;
+      z-index: 50;
       transition: opacity 0.4s ease;
     }
 
-    /* إخفاء الهيدر عند النزول */
     .hide-header {
       opacity: 0;
       pointer-events: none;
@@ -42,16 +44,14 @@
 
     /* البنر */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #2e1065, #4c1d95, #6d28d9, #a855f7);
       background-size: 200% 200%;
       animation: gradientMove 10s ease infinite;
       position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      padding-top: 180px;
+      padding-bottom: 120px;
       color: white;
     }
 
@@ -76,6 +76,20 @@
       100% { transform: translate(60px, 60px); }
     }
 
+    /* كروت المميزات العائمة */
+    .feature-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-6px);
+    }
+
     /* زر نابض */
     .pulse {
       animation: pulseAnim 1.8s infinite;
@@ -91,18 +105,50 @@
 
 <body class="bg-white text-gray-800">
 
-  <!-- الهيدر العائم الخاص بالصفحة الرئيسية -->
+  <!-- الهيدر العائم -->
   <div class="floating-header" id="floatingHeader">
     <a href="/PdfSwift/index.html" class="text-white font-bold text-xl">PdfSwift</a>
     <a href="/PdfSwift/tools.html" class="text-white hover:text-purple-200 transition">الأدوات</a>
     <a href="/PdfSwift/about.html" class="text-white hover:text-purple-200 transition">عن الموقع</a>
   </div>
 
-  <!-- البنر -->
+  <!-- البنر + المميزات داخله -->
   <section class="hero">
     <div class="glow"></div>
 
-    <div class="relative z-10 px-6">
+    <!-- المميزات داخل البنر -->
+    <div class="relative z-10 container mx-auto px-6 mb-20">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+        <div class="feature-card p-8 rounded-2xl text-center">
+          <i class="fa-solid fa-bolt text-white text-5xl mb-4"></i>
+          <h3 class="font-bold text-2xl mb-2">سرعة خارقة</h3>
+          <p class="text-purple-100 leading-relaxed">
+            جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات — مما يجعلها أسرع من الخدمات التقليدية.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-2xl text-center">
+          <i class="fa-solid fa-shield-halved text-white text-5xl mb-4"></i>
+          <h3 class="font-bold text-2xl mb-2">خصوصية كاملة</h3>
+          <p class="text-purple-100 leading-relaxed">
+            ملفاتك لا تغادر جهازك إطلاقًا — كل المعالجة تتم محليًا داخل المتصفح.
+          </p>
+        </div>
+
+        <div class="feature-card p-8 rounded-2xl text-center">
+          <i class="fa-solid fa-gift text-white text-5xl mb-4"></i>
+          <h3 class="font-bold text-2xl mb-2">مجاني بالكامل</h3>
+          <p class="text-purple-100 leading-relaxed">
+            لا اشتراكات — لا تسجيل — لا قيود. جميع الأدوات متاحة للجميع مجانًا.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- نص البنر -->
+    <div class="relative z-10 px-6 text-center">
       <h1 class="text-5xl font-bold mb-6 drop-shadow-xl">
         أدوات PDF وصور تعمل داخل المتصفح
       </h1>
@@ -118,48 +164,12 @@
     </div>
   </section>
 
-  <!-- المميزات -->
-  <section class="py-24 px-6 container mx-auto">
-    <h2 class="text-4xl font-bold text-center text-purple-700 mb-12">
-      لماذا PdfSwift؟
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
-
-      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
-        <i class="fa-solid fa-bolt text-purple-600 text-5xl mb-4"></i>
-        <h3 class="font-bold text-2xl mb-2">سرعة خارقة</h3>
-        <p class="text-gray-600 leading-relaxed">
-          جميع الأدوات تعمل مباشرة من جهازك بدون رفع ملفات — مما يجعلها أسرع من الخدمات التقليدية.
-        </p>
-      </div>
-
-      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
-        <i class="fa-solid fa-shield-halved text-purple-600 text-5xl mb-4"></i>
-        <h3 class="font-bold text-2xl mb-2">خصوصية كاملة</h3>
-        <p class="text-gray-600 leading-relaxed">
-          ملفاتك لا تغادر جهازك إطلاقًا — كل المعالجة تتم محليًا داخل المتصفح.
-        </p>
-      </div>
-
-      <div class="p-8 bg-white shadow-lg rounded-2xl text-center">
-        <i class="fa-solid fa-gift text-purple-600 text-5xl mb-4"></i>
-        <h3 class="font-bold text-2xl mb-2">مجاني بالكامل</h3>
-        <p class="text-gray-600 leading-relaxed">
-          لا اشتراكات — لا تسجيل — لا قيود. جميع الأدوات متاحة للجميع مجانًا.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
   <!-- الفوتر -->
   <div id="footer-placeholder"></div>
 
   <script src="js/layout.js"></script>
 
   <script>
-    // إخفاء الهيدر عند النزول
     const header = document.getElementById("floatingHeader");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 120) {
